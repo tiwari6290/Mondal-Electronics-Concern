@@ -1,0 +1,21 @@
+.checklist {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.empty {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.empty img {
+  width: 80px;
+  opacity: 0.6;
+}
+
+.empty span {
+  font-size: 12px;
+  color: gray;
+}

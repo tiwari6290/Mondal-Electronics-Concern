@@ -1,0 +1,985 @@
+.sidebar {
+  width: 260px;
+  background: #0b1a33;
+  color: white;
+  min-height: 100vh;
+  padding: 15px;
+}
+
+.logo h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.logo p {
+  font-size: 12px;
+  color: #bbb;
+}
+
+.invoice-btn {
+  width: 100%;
+  padding: 10px;
+  background: #dbe3ff;
+  color: #000;
+  border: none;
+  margin: 15px 0;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.menu-title {
+  font-size: 12px;
+  color: #aaa;
+  margin: 15px 0 5px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sidebar li:hover {
+  background: #1c2b4a;
+}
+
+.active {
+  background: #1c2b4a;
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1a33, #071225);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b4d;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.profile h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile p {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* BUTTON */
+.invoice-box {
+  padding: 0 10px;
+}
+
+.invoice-btn {
+  width: 100%;
+  padding: 10px;
+  background: #dfe5ff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* SALE */
+.sale-banner {
+  background: #ffe0a3;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.sale-tag {
+  background: orange;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.trial {
+  background: #ff4d4d;
+  padding: 2px 6px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.section {
+  font-size: 11px;
+  color: #8aa0c8;
+  margin: 15px 5px 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+li:hover {
+  background: #1c2b4a;
+}
+
+.active {
+  background: #2c3d73;
+}
+
+/* ARROW */
+.arrow {
+  margin-left: auto;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+  margin-top: 10px;
+  background: #3b4a6b;
+  padding: 8px;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10px;
+  background: #1a2545;
+}
+
+.settings {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.security {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* SCROLLBAR */
+.menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+.extra-menu {
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.extra-menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.extra-menu li:hover {
+  background: #1c2b4a;
+}
+
+/* Smooth animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1a33, #071225);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b4d;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.profile h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile p {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* BUTTON */
+.invoice-box {
+  padding: 0 10px;
+}
+
+.invoice-btn {
+  width: 100%;
+  padding: 10px;
+  background: #dfe5ff;
+  border: none;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+/* SALE */
+.sale-banner {
+  background: #ffe0a3;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.sale-tag {
+  background: orange;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.trial {
+  background: #ff4d4d;
+  padding: 2px 6px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.section {
+  font-size: 11px;
+  color: #8aa0c8;
+  margin: 15px 5px 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+li:hover {
+  background: #1c2b4a;
+}
+
+.active {
+  background: #2c3d73;
+}
+
+/* ARROW */
+.arrow {
+  margin-left: auto;
+}
+
+/* TOGGLE TEXT */
+.scroll-toggle {
+  font-size: 12px;
+  color: #8aa0c8;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.scroll-toggle:hover {
+  color: #fff;
+}
+
+/* EXTRA MENU */
+.extra-menu {
+  margin-top: 5px;
+}
+
+.extra-menu li svg {
+  font-size: 16px;
+  color: #9fb3d1;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10px;
+  background: #1a2545;
+}
+
+.settings {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.security {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+}
+
+/* SCROLLBAR */
+.menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.menu::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 10px;
+}
+/* BUTTON */
+.invoice-box {
+  padding: 10px;
+  position: relative;
+}
+
+.invoice-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #dfe5ff;
+  padding: 10px 15px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* DROPDOWN ICON */
+.dropdown-icon {
+  cursor: pointer;
+}
+
+/* DROPDOWN PANEL */
+.dropdown-panel {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 250px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+/* TITLES */
+.dropdown-title {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 10px 0 5px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 5px;
+}
+
+/* LIST */
+.dropdown-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.dropdown-panel li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.dropdown-panel li:hover {
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+/* DROPDOWN PANEL */
+.dropdown-panel {
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  width: 260px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-title {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 10px 0 5px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 5px;
+}
+
+.dropdown-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.dropdown-panel li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.dropdown-panel li:hover {
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+
+/* Arrow click */
+.dropdown-icon {
+  cursor: pointer;
+}
+
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1a33, #071225);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b4d;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.profile h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.profile p {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* BUTTON */
+.invoice-box {
+  padding: 0 10px;
+  position: relative;
+}
+
+.invoice-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 12px 16px;
+
+  background: #dfe5ff;
+  border-radius: 30px;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.invoice-btn:hover {
+  background: #c7d2fe;
+}
+
+.invoice-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ARROW */
+.dropdown-icon {
+  font-size: 14px;
+  color: #374151;
+  transition: 0.3s;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+/* DROPDOWN PANEL */
+.dropdown-panel {
+  position: absolute;
+  top: 55px;
+  left: 10px;
+  width: 260px;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-title {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 10px 0 5px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 5px;
+}
+
+.dropdown-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0;
+}
+
+.dropdown-panel li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #374151;
+}
+
+.dropdown-panel li:hover {
+  background: #e5e7eb;
+  border-radius: 8px;
+}
+
+/* SALE */
+.sale-banner {
+  background: #ffe0a3;
+  margin: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.sale-tag {
+  background: orange;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.trial {
+  background: #ff4d4d;
+  padding: 2px 6px;
+  border-radius: 10px;
+  color: white;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.section {
+  font-size: 11px;
+  color: #8aa0c8;
+  margin: 15px 5px 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+li:hover {
+  background: #1c2b4a;
+}
+
+.active {
+  background: #2c3d73;
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+  font-size: 12px;
+  color: #8aa0c8;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.scroll-btn:hover {
+  color: #fff;
+}
+
+/* EXTRA MENU */
+.extra-menu li svg {
+  color: #9fb3d1;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10px;
+  background: #1a2545;
+}
+
+.settings {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.security {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #aaa;
+}
+
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1a33, #071225);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b4d;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.profile p {
+  font-size: 12px;
+  color: #bbb;
+}
+
+/* BUTTON */
+.invoice-box {
+  padding: 0 10px;
+  position: relative;
+}
+
+.invoice-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #dfe5ff;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* DROPDOWN */
+.dropdown-panel {
+  position: absolute;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.dropdown-title {
+  font-size: 12px;
+  color: gray;
+  margin: 10px 0 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.section {
+  font-size: 11px;
+  color: #8aa0c8;
+  margin: 15px 5px 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #1c2b4a;
+}
+
+.active {
+  background: #2c3d73;
+}
+
+.arrow {
+  margin-left: auto;
+}
+
+/* SUB MENU */
+.sub-menu {
+  padding-left: 35px;
+}
+
+.sub-menu li {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.sub-active {
+  background: #2c3d73;
+  color: white;
+}
+
+/* ROTATE */
+.rotate {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+
+/* SCROLL BUTTON */
+.scroll-btn {
+  font-size: 12px;
+  color: #8aa0c8;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10px;
+  background: #1a2545;
+}
+
+.settings {
+  display: flex;
+  gap: 10px;
+}
+
+.security {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+}
+.sub-menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+}
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0b1a33, #071225);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e2b4d;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+/* BUTTON */
+.invoice-box {
+  padding: 0 10px;
+  position: relative;
+}
+
+.invoice-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  background: #dfe5ff;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* MENU */
+.menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.section {
+  font-size: 11px;
+  color: #8aa0c8;
+  margin: 15px 5px 5px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.active {
+  background: #2c3d73;
+}
+
+/* SUB MENU */
+.sub-menu {
+  margin-left: 10px;
+}
+
+.sub-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin: 5px 0;
+  border-radius: 25px;
+  color: #cbd5e1;
+}
+
+.sub-item:hover {
+  background: #1c2b4a;
+}
+
+.active-sub {
+  background: #3b4a7a;
+  color: white;
+}
+
+/* FOOTER */
+.footer {
+  padding: 10px;
+  background: #1a2545;
+}

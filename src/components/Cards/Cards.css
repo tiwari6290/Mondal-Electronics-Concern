@@ -1,0 +1,28 @@
+.cards {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.green {
+  background: #e6f7ee;
+}
+
+.red {
+  background: #fdecec;
+}
+
+.grey {
+  background: #f3f4f6;
+}
+
+.card h2 {
+  margin-top: 10px;
+}

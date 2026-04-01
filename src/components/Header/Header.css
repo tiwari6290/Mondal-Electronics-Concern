@@ -1,0 +1,57 @@
+.header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOP HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ICONS */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 16px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.icon:hover {
+  color: #000;
+}
+
+/* BUTTON */
+.demo-btn {
+  background: #dbeafe;
+  color: #2563eb;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* RIGHT UPDATE (KEY PART) */
+.update-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #374151;
+}
+
+.refresh {
+  cursor: pointer;
+  color: #3b82f6;
+}
+
+
+

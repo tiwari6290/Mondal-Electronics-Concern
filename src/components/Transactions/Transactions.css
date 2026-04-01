@@ -1,0 +1,30 @@
+.transactions {
+  flex: 2;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  text-align: left;
+  font-size: 12px;
+  color: #666;
+}
+
+td {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.link {
+  text-align: center;
+  color: #3b82f6;
+  margin-top: 10px;
+  cursor: pointer;
+}
