@@ -1,19 +1,57 @@
 import "./Transactions.css";
+import { useNavigate } from "react-router-dom";
 
 const Transactions = () => {
+  const navigate = useNavigate();
+
   const data = [
-    ["10 Mar 2026", "Purchase Invoices", "4", "Aditya", "₹0"],
-    ["10 Mar 2026", "Credit Note", "5", "Saktiman", "₹256"],
-    ["10 Mar 2026", "Sales Invoices", "29", "Saktiman", "₹256"],
-    ["10 Mar 2026", "Credit Note", "4", "Saktiman", "₹256"],
-    ["10 Mar 2026", "Payment In", "13", "Saktiman", "₹10,000"],
+    {
+      date: "10 Mar 2026",
+      type: "Purchase Invoices",
+      txn: 4,
+      party: "Aditya",
+      amount: "₹ 0"
+    },
+    {
+      date: "10 Mar 2026",
+      type: "Credit Note",
+      txn: 5,
+      party: "Saktiman",
+      amount: "₹ 256"
+    },
+    {
+      date: "10 Mar 2026",
+      type: "Sales Invoices",
+      txn: 29,
+      party: "Saktiman",
+      amount: "₹ 256"
+    },
+    {
+      date: "10 Mar 2026",
+      type: "Credit Note",
+      txn: 4,
+      party: "Saktiman",
+      amount: "₹ 256"
+    },
+    {
+      date: "10 Mar 2026",
+      type: "Payment In",
+      txn: 13,
+      party: "Saktiman",
+      amount: "₹ 10,000"
+    }
   ];
 
   return (
     <div className="transactions">
-      <h3>Latest Transactions</h3>
 
-      <table>
+      {/* HEADER */}
+      <div className="transactions-header">
+        <h3>Latest Transactions</h3>
+      </div>
+
+      {/* TABLE */}
+      <table className="transactions-table">
         <thead>
           <tr>
             <th>Date</th>
@@ -25,17 +63,28 @@ const Transactions = () => {
         </thead>
 
         <tbody>
-          {data.map((row, i) => (
-            <tr key={i}>
-              {row.map((col, j) => (
-                <td key={j}>{col}</td>
-              ))}
+          {data.map((item, index) => (
+            <tr key={index}>
+              <td>{item.date}</td>
+              <td>{item.type}</td>
+              <td>{item.txn}</td>
+              <td>{item.party}</td>
+              <td>{item.amount}</td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      <p className="link">See All Transactions</p>
+      {/* SEE ALL BUTTON */}
+      <div className="see-all-container">
+        <p
+          className="see-all"
+          onClick={() => navigate("/transactions")}
+        >
+          See All Transactions
+        </p>
+      </div>
+
     </div>
   );
 };

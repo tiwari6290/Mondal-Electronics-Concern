@@ -59,7 +59,7 @@ const Sidebar = () => {
           <FaChevronDown className={openDropdown ? "rotate" : ""} />
         </div>
 
-        {/* ✅ FULL DROPDOWN */}
+        {/*  FULL DROPDOWN */}
         {openDropdown && (
           <div className="dropdown-panel">
 

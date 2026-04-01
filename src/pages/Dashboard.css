@@ -28,3 +28,56 @@
     flex-direction: column;
   }
 }
+
+
+.dashboard {
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+  }
+}
+
+.dashboard {
+  display: flex;
+  height: 100vh; /* FULL SCREEN */
+  overflow: hidden; /* PREVENT DOUBLE SCROLL */
+}
+
+/* SIDEBAR FIXED */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* MAIN CONTENT */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* ONLY MAIN SCROLLS */
+  padding: 20px;
+  background: #f5f7fb;
+}
+
+/* CONTENT GRID */
+.content {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
