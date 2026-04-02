@@ -1,5 +1,6 @@
 import "./Sidebar.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaUsers,
@@ -30,6 +31,7 @@ import {
 } from "react-icons/fa";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [showMore, setShowMore] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
 
@@ -46,7 +48,10 @@ const Sidebar = () => {
           <h4>Mondal Electronic...</h4>
           <p>9555780835</p>
         </div>
-        <FaCog />
+        <FaCog
+        onClick={() => navigate("/settings")}
+        style={{ cursor: "pointer" }}
+      />
       </div>
 
       {/* CREATE INVOICE */}
@@ -222,9 +227,14 @@ const Sidebar = () => {
 
       {/* FOOTER */}
       <div className="footer">
-        <div className="settings">
+        <div
+          className="settings"
+          onClick={() => navigate("/settings")}
+          style={{ cursor: "pointer" }}
+        >
           <FaCog /> Settings
-        </div>
+
+      </div>
         <div className="security">
           <span>100% Secure</span>
           <span>ISO Certified</span>
