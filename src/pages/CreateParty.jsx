@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./CreateParty.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import PartySettings from "../pages/Partysettings"
 import { FaArrowLeft, FaUniversity } from "react-icons/fa";
 import { FiSettings, FiSearch, FiX } from "react-icons/fi";
 
@@ -236,10 +237,11 @@ const formatAddress = (addr) => {
    CREATE PARTY PAGE
 ============================================================ */
 const CreateParty = () => {
-  const [showBillingModal, setShowBillingModal]   = useState(false);
-  const [showShippingModal, setShowShippingModal] = useState(false);
-  const [showBankModal, setShowBankModal]         = useState(false);
-  const [billingAddress, setBillingAddress]       = useState(null);
+  const [showBillingModal, setShowBillingModal]       = useState(false);
+  const [showShippingModal, setShowShippingModal]     = useState(false);
+  const [showBankModal, setShowBankModal]             = useState(false);
+  const [showPartySettings, setShowPartySettings]     = useState(false);
+  const [billingAddress, setBillingAddress]           = useState(null);
   const [shippingAddress, setShippingAddress]     = useState(null);
   const [sameAsBilling, setSameAsBilling]         = useState(true);
   const [bankAccounts, setBankAccounts]           = useState([]);
@@ -279,7 +281,7 @@ const CreateParty = () => {
               <h2>Create Party</h2>
             </div>
             <div className="cp-actions">
-              <button className="settings-btn">Party Settings <FiSettings size={14} /></button>
+              <button className="settings-btn" onClick={() => setShowPartySettings(true)}>Party Settings <FiSettings size={14} /></button>
               <button className="outline-btn">Save &amp; New</button>
               <button className="primary-btn">Save</button>
             </div>
@@ -499,6 +501,11 @@ const CreateParty = () => {
           onClose={() => setShowBankModal(false)}
           onSave={handleBankSave}
         />
+      )}
+
+      {/* PARTY SETTINGS MODAL */}
+      {showPartySettings && (
+        <PartySettings onClose={() => setShowPartySettings(false)} />
       )}
 
     </div>

@@ -1,0 +1,207 @@
+/* ============================================================
+   LAYOUT
+============================================================ */
+.pi-main {
+  flex: 1;
+  overflow-y: auto;
+  background: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+.pi-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px 14px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pi-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.pi-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pi-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.pi-icon-btn:hover { background: #f9fafb; }
+
+/* ============================================================
+   TAB BAR
+============================================================ */
+.pi-tabs {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0 24px;
+}
+
+.pi-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 4px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #6b7280;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  margin-right: 24px;
+}
+
+.pi-tab-active {
+  color: #4f46e5;
+  border-bottom-color: #4f46e5;
+  font-weight: 600;
+}
+
+/* ============================================================
+   FILTER BAR
+============================================================ */
+.pi-filterbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  gap: 12px;
+}
+
+.pi-filter-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pi-filter-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pi-filter-date:hover { background: #f9fafb; }
+
+/* ── Create Payment In button ── */
+.pi-create-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.pi-create-btn:hover { background: #4338ca; }
+
+/* ============================================================
+   TABLE
+============================================================ */
+.pi-table-wrap {
+  flex: 1;
+  margin: 0 24px 24px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.pi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.pi-table thead tr {
+  background: #fafafa;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.pi-table th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.pi-sort {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: 3px;
+}
+
+.pi-row {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.pi-row:hover { background: #f9fafb; }
+
+.pi-table td {
+  padding: 14px 16px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.pi-td-more {
+  width: 44px;
+  text-align: center;
+}
+
+.pi-more {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.pi-more:hover { background: #f3f4f6; color: #374151; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .pi-table-wrap,
+  .pi-filterbar { margin-left: 12px; margin-right: 12px; }
+}

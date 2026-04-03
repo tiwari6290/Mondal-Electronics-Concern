@@ -1,113 +1,38 @@
 import "./Sidebar.css";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
-  FaTachometerAlt,
-  FaUsers,
-  FaBox,
-  FaShoppingCart,
-  FaFileInvoice,
-  FaChartBar,
-  FaUniversity,
-  FaFileAlt,
-  FaMoneyBill,
-  FaReceipt,
-  FaDesktop,
-  FaCog,
-  FaChevronDown,
-  FaChevronRight,
-  FaUserFriends,
-  FaSms,
-  FaCalendarCheck,
-
-  // Dropdown icons
-  FaUserPlus,
-  FaBoxOpen,
-  FaFileInvoiceDollar,
-  FaUndo,
-  FaTruck,
-  FaClipboardList,
-  FaShoppingBag,
-  FaMoneyCheck
+  FaTachometerAlt, FaUsers, FaBox, FaShoppingCart, FaFileInvoice,
+  FaChartBar, FaUniversity, FaFileAlt, FaMoneyBill, FaReceipt,
+  FaDesktop, FaCog, FaChevronDown, FaChevronRight, FaUserFriends,
+  FaSms, FaCalendarCheck, FaUserPlus, FaBoxOpen, FaFileInvoiceDollar,
+  FaUndo, FaTruck, FaClipboardList, FaShoppingBag, FaMoneyCheck,
 } from "react-icons/fa";
 
 const Sidebar = () => {
-  const navigate = useNavigate();
-  const [showMore, setShowMore] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(false);
   const navigate  = useNavigate();
   const location  = useLocation();
 
-  const [showMore,      setShowMore]      = useState(false);
-  const [openDropdown,  setOpenDropdown]  = useState(false);
-  const [openItems,     setOpenItems]     = useState(false);
-  const [openSales,     setOpenSales]     = useState(false);
-  const [openPurchase,  setOpenPurchase]  = useState(false);
+  const [showMore,     setShowMore]     = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const [openItems,    setOpenItems]    = useState(false);
+  const [openSales,    setOpenSales]    = useState(false);
+  const [openPurchase, setOpenPurchase] = useState(false);
 
   const isActive = (path) => location.pathname === path;
+
+  const navItem = (path, label, Icon) => (
+    <div
+      className={`sub-item ${isActive(path) ? "active-sub" : ""}`}
+      onClick={() => navigate(path)}
+    >
+      <Icon className="sub-icon" /> {label}
+    </div>
+  );
 
   return (
     <div className="sidebar">
 
-      {/* PROFILE */}
-      <div className="profile">
-        <div>
-          <h4>Mondal Electronic...</h4>
-          <p>9555780835</p>
-        </div>
-        <FaCog
-        onClick={() => navigate("/settings")}
-        style={{ cursor: "pointer" }}
-      />
-      </div>
-
-      {/* CREATE INVOICE */}
-      <div className="invoice-box">
-        <div
-          className="invoice-btn"
-          onClick={() => setOpenDropdown(!openDropdown)}
-        >
-          <span>+ Create Sales Invoice</span>
-          <FaChevronDown className={openDropdown ? "rotate" : ""} />
-        </div>
-
-        {/*  FULL DROPDOWN */}
-        {openDropdown && (
-          <div className="dropdown-panel">
-
-            {/* GENERAL */}
-            <p className="dropdown-title">GENERAL</p>
-            <ul>
-              <li><FaUserPlus /> Create Party</li>
-              <li><FaBoxOpen /> Create Item</li>
-            </ul>
-
-            {/* SALES */}
-            <p className="dropdown-title">SALES TRANSACTIONS</p>
-            <ul>
-              <li><FaFileInvoiceDollar /> Quotation</li>
-              <li><FaMoneyBill /> Payment In</li>
-              <li><FaUndo /> Sales Return</li>
-              <li><FaFileAlt /> Credit Note</li>
-              <li><FaTruck /> Delivery Challan</li>
-              <li><FaClipboardList /> Proforma Invoice</li>
-            </ul>
-
-            {/* PURCHASE */}
-            <p className="dropdown-title">PURCHASE TRANSACTIONS</p>
-            <ul>
-              <li><FaShoppingBag /> Purchase</li>
-              <li><FaMoneyCheck /> Payment Out</li>
-              <li><FaUndo /> Purchase Return</li>
-              <li><FaFileAlt /> Debit Note</li>
-              <li><FaClipboardList /> Purchase Orders</li>
-            </ul>
-
-            {/* EXPENSE */}
-            <ul>
-              <li><FaUserPlus /> Create Expense</li>
-            </ul>
       {/* ── SCROLLABLE TOP ── */}
       <div className="sidebar-top">
 
@@ -124,23 +49,35 @@ const Sidebar = () => {
 
         {/* CREATE INVOICE BUTTON */}
         <div className="invoice-box">
-          <div className="invoice-btn" onClick={() => setOpenDropdown(!openDropdown)}>
+          <div
+            className="invoice-btn"
+            onClick={() => setOpenDropdown(!openDropdown)}
+          >
             <span>+ Create Sales Invoice</span>
-            <FaChevronDown className={`dropdown-arrow ${openDropdown ? "rotate" : ""}`} />
+            <FaChevronDown
+              className={`dropdown-arrow ${openDropdown ? "rotate" : ""}`}
+            />
           </div>
 
           {openDropdown && (
             <div className="dropdown-panel">
               <p className="dropdown-title">GENERAL</p>
               <ul>
-                <li><FaUserPlus /> Create Party</li>
+                <li onClick={() => { navigate("/create-party"); setOpenDropdown(false); }}>
+                  <FaUserPlus /> Create Party
+                </li>
                 <li><FaBoxOpen /> Create Item</li>
               </ul>
 
               <p className="dropdown-title">SALES TRANSACTIONS</p>
               <ul>
+                <li onClick={() => { navigate("/sales/create-invoice"); setOpenDropdown(false); }}>
+                  <FaFileInvoice /> Sales Invoice
+                </li>
                 <li><FaFileInvoiceDollar /> Quotation</li>
-                <li><FaMoneyBill /> Payment In</li>
+                <li onClick={() => { navigate("/sales/payment-in"); setOpenDropdown(false); }}>
+                  <FaMoneyBill /> Payment In
+                </li>
                 <li><FaUndo /> Sales Return</li>
                 <li><FaFileAlt /> Credit Note</li>
                 <li><FaTruck /> Delivery Challan</li>
@@ -174,20 +111,17 @@ const Sidebar = () => {
         <div className="menu">
 
           <p className="menu-section">GENERAL</p>
-
           <ul>
-            {/* Dashboard */}
             <li
-              className={isActive("/") ? "menu-item active-item" : "menu-item"}
-              onClick={() => navigate("/")}
+              className={`menu-item ${isActive("/dashboard") ? "active-item" : ""}`}
+              onClick={() => navigate("/dashboard")}
             >
               <FaTachometerAlt className="menu-icon" />
               <span>Dashboard</span>
             </li>
 
-            {/* Parties */}
             <li
-              className={isActive("/parties") ? "menu-item active-item" : "menu-item"}
+              className={`menu-item ${isActive("/parties") ? "active-item" : ""}`}
               onClick={() => navigate("/parties")}
             >
               <FaUsers className="menu-icon" />
@@ -215,13 +149,13 @@ const Sidebar = () => {
             </li>
             {openSales && (
               <div className="sub-menu">
-                <div className="sub-item active-sub"><FaFileInvoice className="sub-icon" /> Sales Invoices</div>
-                <div className="sub-item"><FaFileInvoiceDollar className="sub-icon" /> Quotation / Estimate</div>
-                <div className="sub-item"><FaMoneyBill className="sub-icon" /> Payment In</div>
-                <div className="sub-item"><FaUndo className="sub-icon" /> Sales Return</div>
-                <div className="sub-item"><FaFileAlt className="sub-icon" /> Credit Note</div>
-                <div className="sub-item"><FaTruck className="sub-icon" /> Delivery Challan</div>
-                <div className="sub-item"><FaClipboardList className="sub-icon" /> Proforma Invoice</div>
+                {navItem("/sales/invoices",    "Sales Invoices",       FaFileInvoice)}
+                {navItem("/sales/quotation",   "Quotation / Estimate", FaFileInvoiceDollar)}
+                {navItem("/sales/payment-in",  "Payment In",           FaMoneyBill)}
+                {navItem("/sales/return",      "Sales Return",         FaUndo)}
+                {navItem("/sales/credit-note", "Credit Note",          FaFileAlt)}
+                {navItem("/sales/challan",     "Delivery Challan",     FaTruck)}
+                {navItem("/sales/proforma",    "Proforma Invoice",     FaClipboardList)}
               </div>
             )}
 
@@ -233,7 +167,7 @@ const Sidebar = () => {
             </li>
             {openPurchase && (
               <div className="sub-menu">
-                <div className="sub-item active-sub"><FaShoppingBag className="sub-icon" /> Purchase Invoices</div>
+                <div className="sub-item"><FaShoppingBag className="sub-icon" /> Purchase Invoices</div>
                 <div className="sub-item"><FaMoneyCheck className="sub-icon" /> Payment Out</div>
                 <div className="sub-item"><FaUndo className="sub-icon" /> Purchase Return</div>
                 <div className="sub-item"><FaFileAlt className="sub-icon" /> Debit Note</div>
@@ -241,7 +175,6 @@ const Sidebar = () => {
               </div>
             )}
 
-            {/* Reports */}
             <li className="menu-item">
               <FaChartBar className="menu-icon" />
               <span>Reports</span>
@@ -276,22 +209,9 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* FOOTER */}
-      <div className="footer">
-        <div
-          className="settings"
-          onClick={() => navigate("/settings")}
-          style={{ cursor: "pointer" }}
-        >
-          <FaCog /> Settings
-
-      </div>
-        <div className="security">
-          <span>100% Secure</span>
-          <span>ISO Certified</span>
       {/* ── FOOTER ── */}
       <div className="sidebar-footer">
-        <div className="footer-settings">
+        <div className="footer-settings" onClick={() => navigate("/settings")}>
           <FaCog className="menu-icon" />
           <span>Settings</span>
         </div>

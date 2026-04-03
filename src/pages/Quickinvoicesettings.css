@@ -1,0 +1,398 @@
+/* ============================================================
+   OVERLAY
+============================================================ */
+.qis-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  font-family: "Inter", sans-serif;
+}
+
+/* ============================================================
+   MODAL BOX
+============================================================ */
+.qis-modal {
+  background: #ffffff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 640px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+.qis-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  border-bottom: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.qis-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.qis-close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #374151;
+}
+
+.qis-close:hover { background: #f3f4f6; }
+
+/* ============================================================
+   BODY
+============================================================ */
+.qis-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qis-body::-webkit-scrollbar { width: 4px; }
+.qis-body::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+
+/* ============================================================
+   SETTING CARD
+============================================================ */
+.qis-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.qis-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.qis-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.qis-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.qis-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.qis-card-desc {
+  font-size: 12.5px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   TOGGLE SWITCH
+============================================================ */
+.qis-toggle {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.qis-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.qis-slider {
+  position: absolute;
+  inset: 0;
+  background: #d1d5db;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background 0.25s;
+}
+
+.qis-slider::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.25s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.qis-toggle input:checked + .qis-slider {
+  background: #4f46e5;
+}
+
+.qis-toggle input:checked + .qis-slider::before {
+  transform: translateX(22px);
+}
+
+/* ============================================================
+   CHOOSE INVOICE THEME
+============================================================ */
+.qis-theme-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  gap: 16px;
+}
+
+.qis-theme-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  white-space: nowrap;
+}
+
+.qis-theme-select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 36px 8px 14px;
+  font-size: 13px;
+  color: #374151;
+  background: white;
+  cursor: pointer;
+  min-width: 180px;
+  appearance: auto;
+}
+
+.qis-theme-select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+/* ============================================================
+   CUSTOMISE INVOICE BANNER
+============================================================ */
+.qis-banner {
+  background: #eff6ff;
+  border-radius: 12px;
+  padding: 20px 20px 0 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  overflow: hidden;
+  min-height: 140px;
+}
+
+.qis-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-bottom: 20px;
+}
+
+.qis-banner-heading {
+  font-size: 15px;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.qis-full-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.qis-full-btn:hover { background: #f9fafb; }
+
+/* ── Invoice Preview Illustration ── */
+.qis-banner-preview {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.qis-preview-card {
+  width: 160px;
+  background: white;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.qis-preview-header {
+  background: white;
+  padding: 8px 10px 4px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qis-bar-purple {
+  width: 36px;
+  height: 6px;
+  background: #7c3aed;
+  border-radius: 3px;
+}
+
+.qis-preview-body {
+  padding: 8px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.qis-preview-invoice-text {
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.qis-preview-img-box {
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 4px;
+  background: #f3f4f6;
+}
+
+.qis-preview-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.qis-preview-line {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+}
+
+.qis-line-long { width: 100%; }
+.qis-line-med  { width: 65%; }
+
+.qis-preview-dot-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+}
+
+.qis-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.qis-dot-blue   { background: #60a5fa; }
+.qis-dot-purple { background: #7c3aed; }
+
+.qis-preview-colors {
+  display: flex;
+  gap: 4px;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+.qis-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.qis-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 22px;
+  border-top: 1px solid #e5e7eb;
+  flex-shrink: 0;
+}
+
+.qis-cancel-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+  padding: 9px 40px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+}
+
+.qis-cancel-btn:hover { background: #f9fafb; }
+
+.qis-save-btn {
+  background: #c4b5fd;
+  color: #5b21b6;
+  border: none;
+  padding: 9px 40px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.qis-save-btn:hover { background: #a78bfa; color: white; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 680px) {
+  .qis-modal { max-width: 95vw; }
+  .qis-banner { flex-direction: column; align-items: flex-start; }
+  .qis-preview-card { display: none; }
+}
