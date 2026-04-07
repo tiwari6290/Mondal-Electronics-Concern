@@ -134,10 +134,10 @@ const Sidebar = () => {
               <span>Items</span>
               <FaChevronRight className={`arrow-icon ${openItems ? "rotate" : ""}`} />
             </li>
-            {openItems && (
+                        {openItems && (
               <div className="sub-menu">
-                <div className="sub-item active-sub"><FaBox className="sub-icon" /> Inventory</div>
-                <div className="sub-item"><FaBox className="sub-icon" /> Godown (Warehouse)</div>
+                {navItem("/inventory", "Inventory", FaBox)}
+                {navItem("/godown", "Godown (Warehouse)", FaBox)}
               </div>
             )}
 
@@ -167,11 +167,25 @@ const Sidebar = () => {
             </li>
             {openPurchase && (
               <div className="sub-menu">
-                <div className="sub-item"><FaShoppingBag className="sub-icon" /> Purchase Invoices</div>
-                <div className="sub-item"><FaMoneyCheck className="sub-icon" /> Payment Out</div>
-                <div className="sub-item"><FaUndo className="sub-icon" /> Purchase Return</div>
-                <div className="sub-item"><FaFileAlt className="sub-icon" /> Debit Note</div>
-                <div className="sub-item"><FaClipboardList className="sub-icon" /> Purchase Orders</div>
+                <div className="sub-item" onClick={() => navigate("/purchase-invoices")}>
+  <FaShoppingBag className="sub-icon" /> Purchase Invoices
+</div>
+
+<div className="sub-item" onClick={() => navigate("/payment-out")}>
+  <FaMoneyCheck className="sub-icon" /> Payment Out
+</div>
+
+<div className="sub-item" onClick={() => navigate("/purchase-return")}>
+  <FaUndo className="sub-icon" /> Purchase Return
+</div>
+
+<div className="sub-item" onClick={() => navigate("/debit-note")}>
+  <FaFileAlt className="sub-icon" /> Debit Note
+</div>
+
+<div className="sub-item" onClick={() => navigate("/purchase-orders")}>
+  <FaClipboardList className="sub-icon" /> Purchase Orders
+</div>
               </div>
             )}
 
@@ -184,11 +198,30 @@ const Sidebar = () => {
           {/* ACCOUNTING SOLUTIONS */}
           <p className="menu-section">ACCOUNTING SOLUTIONS</p>
           <ul>
-            <li className="menu-item"><FaUniversity className="menu-icon" /><span>Cash &amp; Bank</span></li>
-            <li className="menu-item"><FaFileAlt className="menu-icon" /><span>E-Invoicing</span></li>
-            <li className="menu-item"><FaMoneyBill className="menu-icon" /><span>Automated Bills</span></li>
-            <li className="menu-item"><FaReceipt className="menu-icon" /><span>Expenses</span></li>
-            <li className="menu-item"><FaDesktop className="menu-icon" /><span>POS Billing</span></li>
+            <li className="menu-item" onClick={() => navigate("/cash-bank")}>
+              <FaUniversity className="menu-icon" />
+              <span>Cash & Bank</span>
+            </li>
+
+            <li className="menu-item" onClick={() => navigate("/einvoicing")}>
+              <FaFileAlt className="menu-icon" />
+              <span>E-Invoicing</span>
+            </li>
+
+            <li className="menu-item" onClick={() => navigate("/bills")}>
+              <FaMoneyBill className="menu-icon" />
+              <span>Automated Bills</span>
+            </li>
+
+            <li className="menu-item" onClick={() => navigate("/expenses")}>
+              <FaReceipt className="menu-icon" />
+              <span>Expenses</span>
+            </li>
+
+            <li className="menu-item" onClick={() => navigate("/pos")}>
+              <FaDesktop className="menu-icon" />
+              <span>POS Billing</span>
+            </li>
           </ul>
 
           {/* BUSINESS TOOLS */}
