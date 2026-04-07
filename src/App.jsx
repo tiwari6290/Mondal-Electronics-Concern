@@ -11,6 +11,11 @@ import CreateQuotation    from "./pages/CreateQuotation";
 import PaymentIn          from "./pages/PaymentIn";
 import SalesReturn        from "./pages/SalesReturn";
 import CreateSalesReturn  from "./pages/CreateSalesReturn";
+import CreditNote         from "./pages/CreditNote";
+import CreateCreditNote   from "./pages/CreateCreditNote";
+import DeliveryChallan    from "./pages/DeliveryChallan";
+import ProformaInvoice    from "./pages/ProformaInvoice";
+import CreateProformaInvoice from "./pages/CreateProformaInvoice";
 
 function App() {
   return (
@@ -33,7 +38,12 @@ function App() {
         <Route path="/sales/create-quotation"  element={<CreateQuotation />} />
         <Route path="/sales/payment-in"        element={<PaymentIn />} />
         <Route path="/sales/return"            element={<SalesReturn />} />
-        <Route path="/sales/create-return"     element={<CreateSalesReturn />} /> 
+        <Route path="/sales/create-return"     element={<CreateSalesReturn />} />
+        <Route path="/sales/credit-note"        element={<CreditNote />} />
+        <Route path="/sales/create-credit-note"  element={<CreateCreditNote />} />
+        <Route path="/sales/challan"             element={<DeliveryChallan />} />
+        <Route path="/sales/proforma"            element={<ProformaInvoice />} />
+        <Route path="/sales/create-proforma"     element={<CreateProformaInvoice />} />
       </Routes>
     </Router>
   );

@@ -1,0 +1,199 @@
+/* ============================================================
+   LAYOUT
+============================================================ */
+.cn-main {
+  flex: 1;
+  overflow-y: auto;
+  background: #f5f7fb;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inter", sans-serif;
+}
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+.cn-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cn-topbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.cn-biz-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 6px 14px;
+}
+
+.cn-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cn-icon-btn {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.cn-icon-btn:hover { background: #f9fafb; }
+
+/* ============================================================
+   FILTER BAR
+============================================================ */
+.cn-filterbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  gap: 12px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cn-filter-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cn-filter-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  color: #374151;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cn-filter-date:hover { background: #f9fafb; }
+
+/* ── Create Credit Note button ── */
+.cn-create-btn {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cn-create-btn:hover { background: #4338ca; }
+
+/* ============================================================
+   TABLE
+============================================================ */
+.cn-table-wrap {
+  flex: 1;
+  margin: 16px 24px 24px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.cn-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.cn-table thead tr {
+  background: #fafafa;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cn-table th {
+  padding: 13px 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.cn-sort {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-left: 3px;
+}
+
+.cn-row {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.cn-row:hover { background: #f9fafb; }
+
+.cn-table td {
+  padding: 14px 16px;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.cn-td-more {
+  width: 44px;
+  text-align: center;
+}
+
+.cn-more {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.cn-more:hover { background: #f3f4f6; color: #374151; }
+
+/* ============================================================
+   STATUS BADGES
+============================================================ */
+.cn-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cn-badge-refunded { color: #2563eb; background: #dbeafe; }
+.cn-badge-unpaid   { color: #dc2626; background: #fee2e2; }
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .cn-table-wrap,
+  .cn-filterbar { margin-left: 12px; margin-right: 12px; }
+}
