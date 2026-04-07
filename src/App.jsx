@@ -16,6 +16,15 @@ import CreateCreditNote   from "./pages/CreateCreditNote";
 import DeliveryChallan    from "./pages/DeliveryChallan";
 import ProformaInvoice    from "./pages/ProformaInvoice";
 import CreateProformaInvoice from "./pages/CreateProformaInvoice";
+import Inventory          from "./pages/Inventory";
+import Godown             from "./pages/Godown";
+import Cash               from "./pages/Cash";
+import Expenses           from "./pages/Expenses";
+import PurchaseInvoice    from "./pages/PurchaseInvoice";
+import PaymentOut         from "./pages/Paymentout";
+import PurchaseReturn     from "./pages/PurchaseReturn";
+import DebitNote          from "./pages/DebitNote";
+import PurchaseOrders     from "./pages/PurchaseOrder";
 
 function App() {
   return (
@@ -30,6 +39,15 @@ function App() {
         <Route path="/settings/*"              element={<BusinessSettings />} />
         <Route path="/parties"                 element={<Parties />} />
         <Route path="/create-party"            element={<CreateParty />} />
+        <Route path="/inventory"               element={<Inventory />} />
+        <Route path="/godown"                  element={<Godown />} />
+        <Route path="/cash-bank"               element={<Cash />} />
+        <Route path="/expenses"                element={<Expenses />} />
+        <Route path="purchase-invoices"        element={<PurchaseInvoice />} />
+        <Route path="/payment-out"             element={<PaymentOut />} />
+        <Route path="/purchase-return"         element={<PurchaseReturn />} />
+        <Route path="/debit-note"              element={<DebitNote />} />
+        <Route path="/purchase-orders"         element={<PurchaseOrders />} />
 
         {/* Sales */}
         <Route path="/sales/invoices"          element={<SalesInvoices />} />

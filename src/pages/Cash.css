@@ -1,0 +1,615 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  background: #f4f4f8;
+  color: #222;
+}
+
+.app-layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: #f4f4f8;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #f4f4f8;
+}
+
+/* ── Top Bar ── */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 24px;
+  background: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  flex-shrink: 0;
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.topbar-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-outline {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  background: #fff;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.btn-outline:hover {
+  background: #f5f5f5;
+  border-color: #bbb;
+}
+
+.btn-primary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: #3b3b98;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.btn-primary:hover {
+  background: #2d2d78;
+}
+
+/* ── Content Body ── */
+.content-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Accounts Panel ── */
+.accounts-panel {
+  width: 390px;
+  min-width: 390px;
+  background: #fff;
+  border-right: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.total-balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.total-balance-label {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+.total-balance-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+}
+
+.account-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 6px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #3b3b98;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.add-bank-btn {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  border: none;
+  color: #3b3b98;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  transition: opacity 0.15s;
+}
+
+.add-bank-btn:hover {
+  opacity: 0.75;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f5f5f5;
+  transition: background 0.12s;
+  gap: 8px;
+}
+
+.account-item:hover {
+  background: #f9f9fb;
+}
+
+.account-item.selected {
+  background: #eeeefc;
+  border-left: 3px solid #3b3b98;
+}
+
+.account-item.unlinked {
+  background: #f5f5fb;
+}
+
+.account-bank-icon {
+  color: #3b3b98;
+  flex-shrink: 0;
+}
+
+.account-item-label {
+  flex: 1;
+  font-size: 13.5px;
+  color: #333;
+  font-weight: 500;
+}
+
+.account-item-amount {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* ── Transactions Panel ── */
+.transactions-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  overflow: hidden;
+}
+
+.tabs-row {
+  display: flex;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0 20px;
+}
+
+.tab {
+  padding: 12px 4px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #888;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  margin-right: 20px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.tab.active {
+  color: #3b3b98;
+  border-bottom-color: #3b3b98;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #444;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fff;
+  transition: background 0.12s;
+}
+
+.date-filter:hover {
+  background: #f5f5f5;
+}
+
+.filter-icon {
+  color: #777;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 10px;
+  background: #fff;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #555;
+  transition: background 0.12s;
+}
+
+.download-btn:hover {
+  background: #f5f5f5;
+}
+
+.empty-state {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 40px;
+}
+
+.empty-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f8;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.empty-icon {
+  color: #9494c8;
+}
+
+.empty-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #444;
+}
+
+.empty-subtitle {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+}
+
+/* ── Modal Overlay ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 10px;
+  width: 420px;
+  max-width: 95vw;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito Sans", sans-serif;
+  animation: modalIn 0.18s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(-12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.modal-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: background 0.12s, color 0.12s;
+}
+
+.modal-close:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.modal-body {
+  padding: 18px 20px 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #777;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.modal-label-accent {
+  color: #3b3b98;
+  margin-top: 16px;
+}
+
+.modal-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  background: #fff;
+  transition: border-color 0.15s;
+}
+
+.modal-select:hover {
+  border-color: #3b3b98;
+}
+
+.placeholder-text {
+  color: #aaa;
+}
+
+/* Toggle group */
+.toggle-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.toggle-btn {
+  flex: 1;
+  padding: 8px 0;
+  border-radius: 20px;
+  border: 1.5px solid #d0d0d0;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  transition: all 0.15s;
+}
+
+.toggle-btn.active-add {
+  border-color: #3b3b98;
+  background: #eeeeff;
+  color: #3b3b98;
+}
+
+.toggle-btn.active-reduce {
+  border-color: #3b3b98;
+  background: #eeeeff;
+  color: #3b3b98;
+}
+
+/* Modal row (balance + date) */
+.modal-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 14px 0 6px 0;
+}
+
+.modal-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 3px;
+}
+
+.date-pill {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12.5px;
+  color: #444;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  margin-top: 3px;
+  transition: border-color 0.15s;
+}
+
+.date-pill:hover {
+  border-color: #3b3b98;
+}
+
+/* Amount input */
+.amount-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 0 2px 0;
+}
+
+.amount-prefix {
+  font-size: 14px;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+}
+
+.amount-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
+  color: #222;
+  font-family: "Nunito Sans", sans-serif;
+  background: transparent;
+}
+
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.amount-underline {
+  height: 1.5px;
+  background: #d0d0d0;
+  margin-bottom: 10px;
+}
+
+.new-balance-label {
+  font-size: 12.5px;
+  color: #888;
+  margin: 4px 0 10px 0;
+}
+
+/* Remarks */
+.add-remarks-btn {
+  background: transparent;
+  border: none;
+  color: #3b3b98;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 6px 0;
+  text-align: left;
+  transition: opacity 0.15s;
+}
+
+.add-remarks-btn:hover {
+  opacity: 0.75;
+}
+
+.remarks-textarea {
+  width: 100%;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: "Nunito Sans", sans-serif;
+  color: #333;
+  resize: none;
+  outline: none;
+  transition: border-color 0.15s;
+  margin-top: 4px;
+}
+
+.remarks-textarea:focus {
+  border-color: #3b3b98;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 14px 20px 18px 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.btn-cancel {
+  padding: 8px 24px;
+  border: 1.5px solid #d0d0d0;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #555;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  transition: background 0.15s;
+}
+
+.btn-cancel:hover {
+  background: #f5f5f5;
+}
+
+.btn-save {
+  padding: 8px 32px;
+  border: none;
+  border-radius: 6px;
+  background: #3b3b98;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Nunito Sans", sans-serif;
+  transition: background 0.15s;
+}
+
+.btn-save:hover {
+  background: #2d2d78;
+}

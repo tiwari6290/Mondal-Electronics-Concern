@@ -1,0 +1,863 @@
+/* ═══════════════════════════════════════════
+   PurchaseInvoice.css
+   Contains: Layout + List Page + Create Page
+   Note: Sidebar styles are handled by the
+         imported Sidebar component's own CSS
+═══════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #f5f5fb;
+  color: #1a1a2e;
+}
+
+/* ─────────────────────────────────────────
+   LAYOUT
+   The sidebar is fixed-positioned inside
+   the Sidebar component. We only need to
+   push the content area to the right.
+───────────────────────────────────────── */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.app-content {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* This must match the exact width of the
+     imported Sidebar component (240px) */
+  margin-left: 240px;
+  background: #f5f5fb;
+  width: calc(100% - 240px);
+  overflow-x: hidden;
+}
+
+/* ─────────────────────────────────────────
+   PURCHASE INVOICES LIST
+───────────────────────────────────────── */
+.pi-main {
+  flex: 1;
+  background: #f5f5fb;
+  display: flex;
+  flex-direction: column;
+}
+
+.pi-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 17px 26px 13px;
+  border-bottom: 1px solid #eeeef8;
+}
+
+.pi-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.02em;
+}
+
+.pi-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pi-icon-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1.5px solid #d8d8ee;
+  border-radius: 6px;
+  padding: 6px 11px;
+  font-size: 12.5px;
+  color: #3a3a5c;
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.pi-icon-btn:hover { background: #f5f5fb; }
+
+.pi-icon-btn--sq { padding: 6px 8px; }
+
+/* ── Summary Cards ── */
+.pi-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 18px 22px;
+  border: 1.5px solid #e2e2f0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.pi-card {
+  padding: 15px 18px 13px;
+  border-right: 1px solid #eeeef8;
+}
+
+.pi-card:last-child { border-right: none; }
+.pi-card--total { background: #f0f0ff; }
+
+.pi-card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #555577;
+  margin-bottom: 7px;
+}
+
+.pi-card--total  .pi-card-header { color: #4a3aff; }
+.pi-card--paid   .pi-card-header { color: #22a06b; }
+.pi-card--unpaid .pi-card-header { color: #e5484d; }
+
+.pi-card-amount {
+  font-size: 21px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+/* ── Filter Bar ── */
+.pi-filterbar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 22px 15px;
+}
+
+.pi-search-btn {
+  background: #fff;
+  border: 1.5px solid #d8d8ee;
+  border-radius: 6px;
+  padding: 7px 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #555;
+  transition: background 0.13s;
+}
+
+.pi-search-btn:hover { background: #f5f5fb; }
+
+.pi-filter-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1.5px solid #d8d8ee;
+  border-radius: 6px;
+  padding: 7px 11px;
+  font-size: 12.5px;
+  color: #3a3a5c;
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.pi-filter-date:hover { background: #f5f5fb; }
+
+.pi-filterbar-spacer { flex: 1; }
+
+.pi-create-btn {
+  background: #4a3aff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 17px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.pi-create-btn:hover { background: #3a2aee; }
+
+/* ── Table ── */
+.pi-table-wrap {
+  margin: 0 22px 22px;
+  background: #fff;
+  border: 1.5px solid #e8e8f4;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.pi-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.pi-table thead tr {
+  background: #f8f8fd;
+  border-bottom: 1px solid #eeeef8;
+}
+
+.pi-table th {
+  text-align: left;
+  padding: 11px 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555577;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.pi-sort-icon {
+  margin-left: 3px;
+  color: #bbb;
+  font-size: 10px;
+}
+
+.pi-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  gap: 13px;
+}
+
+.pi-empty-icon {
+  position: relative;
+  color: #cccce0;
+}
+
+.pi-empty-x {
+  position: absolute;
+  top: -6px;
+  right: -9px;
+  font-size: 13px;
+  color: #cccce0;
+  font-weight: 700;
+}
+
+.pi-empty-text {
+  font-size: 13px;
+  color: #aaaacc;
+}
+
+/* ─────────────────────────────────────────
+   CREATE PURCHASE INVOICE
+───────────────────────────────────────── */
+.cpi-main {
+  flex: 1;
+  background: #f5f5fb;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.cpi-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 13px 22px;
+  border-bottom: 1px solid #eeeef8;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.cpi-header-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.cpi-back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #555;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.13s;
+}
+
+.cpi-back-btn:hover { background: #f0f0f8; }
+
+.cpi-page-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.01em;
+}
+
+.cpi-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cpi-header-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1.5px solid #d8d8ee;
+  border-radius: 6px;
+  padding: 6px 11px;
+  font-size: 12px;
+  color: #3a3a5c;
+  cursor: pointer;
+  transition: background 0.13s;
+  position: relative;
+}
+
+.cpi-header-btn:hover { background: #f5f5fb; }
+
+.cpi-settings-btn { padding-right: 14px; }
+
+.cpi-settings-dot {
+  width: 6px;
+  height: 6px;
+  background: #ff4444;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.cpi-savenew-btn {
+  font-weight: 500;
+  color: #4a3aff;
+  border-color: #c0b8ff;
+}
+
+.cpi-save-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #4a3aff;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 17px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.13s;
+}
+
+.cpi-save-btn:hover { background: #3a2aee; }
+
+/* ── SMS Banner ── */
+.cpi-sms-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  background: #f0f4ff;
+  border-bottom: 1px solid #d8e0ff;
+  padding: 11px 22px;
+  font-size: 12px;
+}
+
+.cpi-sms-icon {
+  color: #4a3aff;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.cpi-sms-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  color: #3a3a5c;
+}
+
+.cpi-sms-text strong {
+  color: #1a1a2e;
+  font-size: 12.5px;
+}
+
+.cpi-change-settings-btn {
+  background: #4a3aff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 13px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cpi-sms-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  padding: 1px;
+}
+
+/* ── Body ── */
+.cpi-body {
+  display: flex;
+  gap: 18px;
+  flex: 1;
+  padding: 18px 22px;
+}
+
+.cpi-left {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.cpi-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9999bb;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Party Box ── */
+.cpi-party-box {
+  border: 2px dashed #c8c0ff;
+  border-radius: 8px;
+  padding: 20px;
+  background: #fff;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.18s;
+  cursor: pointer;
+}
+
+.cpi-party-box:hover { border-color: #4a3aff; }
+
+.cpi-add-party-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #4a3aff;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ── Items Table ── */
+.cpi-items-table {
+  background: #fff;
+  border: 1.5px solid #e8e8f4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cpi-items-header {
+  display: flex;
+  align-items: center;
+  background: #f8f8fd;
+  border-bottom: 1px solid #eeeef8;
+  padding: 9px 13px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #7777aa;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  gap: 7px;
+}
+
+.cpi-col-no    { width: 28px;  flex-shrink: 0; }
+.cpi-col-item  { flex: 2; }
+.cpi-col-hsn   { flex: 1; }
+.cpi-col-qty   { width: 55px;  flex-shrink: 0; }
+.cpi-col-price { width: 95px;  flex-shrink: 0; }
+.cpi-col-disc  { width: 85px;  flex-shrink: 0; }
+.cpi-col-tax   { width: 75px;  flex-shrink: 0; }
+.cpi-col-amt   { width: 85px;  flex-shrink: 0; text-align: right; }
+
+.cpi-add-col-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #4a3aff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.cpi-item-row {
+  display: flex;
+  align-items: center;
+  padding: 7px 13px;
+  gap: 7px;
+  border-bottom: 1px solid #f5f5fc;
+  font-size: 12.5px;
+}
+
+.cpi-input {
+  border: 1px solid #e0e0f0;
+  border-radius: 4px;
+  padding: 4px 7px;
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.13s;
+}
+
+.cpi-input:focus { border-color: #4a3aff; }
+
+.cpi-remove-row {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ccc;
+  padding: 2px;
+  transition: color 0.13s;
+  flex-shrink: 0;
+}
+
+.cpi-remove-row:hover { color: #e5484d; }
+
+.cpi-add-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 13px;
+  border-bottom: 1px solid #f0f0f8;
+}
+
+.cpi-add-item-btn {
+  background: none;
+  border: none;
+  color: #4a3aff;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cpi-scan-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1.5px solid #d8d8ee;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 12px;
+  color: #555577;
+  cursor: pointer;
+}
+
+.cpi-scan-btn:hover { background: #f5f5fb; }
+
+.cpi-subtotal-row {
+  display: flex;
+  align-items: center;
+  padding: 9px 13px;
+  background: #f8f8fd;
+  font-size: 12px;
+  font-weight: 700;
+  color: #555577;
+  gap: 7px;
+}
+
+.cpi-subtotal-label { flex: 1; letter-spacing: 0.06em; }
+.cpi-subtotal-val   { width: 85px; text-align: right; }
+
+/* ── Notes / Terms ── */
+.cpi-add-notes-btn {
+  background: none;
+  border: none;
+  color: #4a3aff;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cpi-terms-box {
+  background: #fff;
+  border: 1.5px solid #e8e8f4;
+  border-radius: 8px;
+  padding: 13px 15px;
+}
+
+.cpi-terms-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 9px;
+}
+
+.cpi-terms-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #bbb;
+}
+
+.cpi-terms-list {
+  padding-left: 17px;
+  font-size: 12px;
+  color: #555577;
+  line-height: 1.75;
+}
+
+.cpi-bottom-links { display: flex; gap: 15px; }
+
+.cpi-link-btn {
+  background: none;
+  border: none;
+  color: #4a3aff;
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ── Right Panel ── */
+.cpi-right {
+  width: 310px;
+  flex-shrink: 0;
+  background: #fff;
+  border: 1.5px solid #e8e8f4;
+  border-radius: 10px;
+  padding: 16px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  align-self: flex-start;
+}
+
+.cpi-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 9px;
+}
+
+.cpi-meta-grid--2 { grid-template-columns: 1fr 1fr; }
+
+.cpi-meta-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cpi-meta-field label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #9999bb;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cpi-meta-input {
+  border: 1.5px solid #e0e0f0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.13s;
+}
+
+.cpi-meta-input:focus { border-color: #4a3aff; }
+
+.cpi-date-input {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid #e0e0f0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #333;
+  background: #fff;
+  transition: border-color 0.13s;
+}
+
+.cpi-date-input:hover { border-color: #4a3aff; }
+.cpi-date-input svg   { color: #888; flex-shrink: 0; }
+
+.cpi-payment-terms {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cpi-days-label {
+  font-size: 11.5px;
+  color: #999;
+  white-space: nowrap;
+}
+
+.cpi-divider {
+  height: 1px;
+  background: #eeeef8;
+}
+
+/* ── Totals ── */
+.cpi-totals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cpi-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #3a3a5c;
+}
+
+.cpi-link-sm {
+  background: none;
+  border: none;
+  color: #4a3aff;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  font-weight: 500;
+}
+
+.cpi-red { color: #e5484d; }
+
+.cpi-checkbox-row { align-items: center; }
+
+.cpi-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #555577;
+  cursor: pointer;
+}
+
+.cpi-checkbox-label input[type="checkbox"] {
+  accent-color: #4a3aff;
+  width: 13px;
+  height: 13px;
+}
+
+.cpi-round-add {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 12px;
+  color: #555577;
+}
+
+.cpi-grand-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+}
+
+.cpi-grand-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1a1a2e;
+  white-space: nowrap;
+}
+
+.cpi-grand-input {
+  flex: 1;
+  border: 1.5px solid #e0e0f0;
+  border-radius: 5px;
+  padding: 6px 9px;
+  font-size: 12px;
+  outline: none;
+  text-align: right;
+  transition: border-color 0.13s;
+}
+
+.cpi-grand-input:focus { border-color: #4a3aff; }
+
+.cpi-fullpaid-row {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 12px;
+}
+
+/* ── Amount Paid ── */
+.cpi-amount-paid-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cpi-amount-paid-row label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9999bb;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cpi-amount-paid-inputs { display: flex; gap: 7px; }
+
+.cpi-amount-paid-input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #e0e0f0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  gap: 4px;
+  flex: 1;
+}
+
+.cpi-rupee {
+  color: #555;
+  font-size: 12.5px;
+}
+
+.cpi-amount-input {
+  border: none;
+  outline: none;
+  font-size: 12.5px;
+  width: 100%;
+  color: #1a1a2e;
+}
+
+.cpi-payment-select {
+  border: 1.5px solid #e0e0f0;
+  border-radius: 5px;
+  padding: 5px 8px;
+  font-size: 12px;
+  color: #333;
+  cursor: pointer;
+  outline: none;
+  background: #fff;
+  min-width: 85px;
+}
+
+.cpi-payment-select:focus { border-color: #4a3aff; }
