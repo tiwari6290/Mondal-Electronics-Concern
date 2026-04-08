@@ -74,27 +74,37 @@ const Sidebar = () => {
                 <li onClick={() => { navigate("/sales/create-invoice"); setOpenDropdown(false); }}>
                   <FaFileInvoice /> Sales Invoice
                 </li>
-                <li><FaFileInvoiceDollar /> Quotation</li>
+                <li onClick={() => { navigate("/sales/create-quotation"); setOpenDropdown(false); }}>
+                  <FaFileInvoiceDollar /> Quotation</li>
                 <li onClick={() => { navigate("/sales/payment-in"); setOpenDropdown(false); }}>
                   <FaMoneyBill /> Payment In
                 </li>
-                <li><FaUndo /> Sales Return</li>
-                <li><FaFileAlt /> Credit Note</li>
+                <li onClick={() => { navigate("/sales/create-return"); setOpenDropdown(false); }}>
+                  <FaUndo /> Sales Return</li>
+                <li onClick={() => { navigate("/sales/create-credit-note"); setOpenDropdown(false); }}>
+                  <FaFileAlt /> Credit Note</li>
                 <li><FaTruck /> Delivery Challan</li>
-                <li><FaClipboardList /> Proforma Invoice</li>
+                <li onClick={() => { navigate("/sales/create-proforma"); setOpenDropdown(false); }}>
+                  <FaClipboardList /> Proforma Invoice</li>
               </ul>
 
               <p className="dropdown-title">PURCHASE TRANSACTIONS</p>
               <ul>
-                <li><FaShoppingBag /> Purchase</li>
-                <li><FaMoneyCheck /> Payment Out</li>
-                <li><FaUndo /> Purchase Return</li>
-                <li><FaFileAlt /> Debit Note</li>
-                <li><FaClipboardList /> Purchase Orders</li>
+                <li onClick={() => { navigate("/purchase-invoices/create"); setOpenDropdown(false); }}>
+                  <FaShoppingBag /> Purchase</li>
+                <li onClick={() => { navigate("/payment-out/create"); setOpenDropdown(false); }}>
+                  <FaMoneyCheck /> Payment Out</li>
+                <li onClick={() => { navigate("/purchase-return/create"); setOpenDropdown(false); }}>
+                  <FaUndo /> Purchase Return</li>
+                <li onClick={() => { navigate("/debit-note/create"); setOpenDropdown(false); }}>
+                  <FaFileAlt /> Debit Note</li>
+                <li onClick={() => { navigate("/purchase-orders/create"); setOpenDropdown(false); }}>
+                  <FaClipboardList /> Purchase Orders</li>
               </ul>
 
               <ul>
-                <li><FaUserPlus /> Create Expense</li>
+                <li onClick={() => { navigate("/expenses"); setOpenDropdown(false); }}>
+                  <FaUserPlus /> Create Expense</li>
               </ul>
             </div>
           )}

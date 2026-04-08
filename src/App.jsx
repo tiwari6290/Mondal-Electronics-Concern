@@ -21,10 +21,16 @@ import Godown             from "./pages/Godown";
 import Cash               from "./pages/Cash";
 import Expenses           from "./pages/Expenses";
 import PurchaseInvoice    from "./pages/PurchaseInvoice";
+import CreatePurchase     from "./pages/CreatePurchaseInvoice";
 import PaymentOut         from "./pages/Paymentout";
+import CreatePayment      from "./pages/CreatePaymentOut";
 import PurchaseReturn     from "./pages/PurchaseReturn";
+import CreatePurchaseReturn from "./pages/CreatePurchaseReturn";
 import DebitNote          from "./pages/DebitNote";
+import CreateDebit        from "./pages/CreateDebitNote";
 import PurchaseOrders     from "./pages/PurchaseOrder";
+import CreatePurchaseOrder from "./pages/CreatePurchaseOrder";
+
 
 function App() {
   return (
@@ -44,10 +50,16 @@ function App() {
         <Route path="/cash-bank"               element={<Cash />} />
         <Route path="/expenses"                element={<Expenses />} />
         <Route path="purchase-invoices"        element={<PurchaseInvoice />} />
+        <Route path="/purchase-invoices/create"element={<CreatePurchase />} />
+        <Route path="/payment-out/create"      element={<CreatePayment />} />
         <Route path="/payment-out"             element={<PaymentOut />} />
         <Route path="/purchase-return"         element={<PurchaseReturn />} />
+        <Route path="/purchase-return/create"  element={<CreatePurchaseReturn />} />
         <Route path="/debit-note"              element={<DebitNote />} />
+        <Route path="/debit-note/create"       element={<CreateDebit />} />
         <Route path="/purchase-orders"         element={<PurchaseOrders />} />
+        <Route path="/purchase-orders/create"  element={<CreatePurchaseOrder />} />
+
 
         {/* Sales */}
         <Route path="/sales/invoices"          element={<SalesInvoices />} />
