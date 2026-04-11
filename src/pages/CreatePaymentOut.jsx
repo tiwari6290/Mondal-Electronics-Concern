@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./CreatePaymentOut.css";
+import QuickPaymentOutSettings from "./Quickpaymentoutsetting";
 
 const ChevronDownIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -74,7 +75,7 @@ const MessageSquareIcon = () => (
 // ─── Create Party Modal ───────────────────────────────────────────────────────
 function CreatePartyModal({ onClose }) {
   const [showAddress, setShowAddress] = useState(false);
-  const [showGSTIN, setShowGSTIN] = useState(false);
+  const [showGSTIN, setShowGSTIN]     = useState(false);
 
   return (
     <div className="modal-overlay">
@@ -98,7 +99,6 @@ function CreatePartyModal({ onClose }) {
           {!showAddress && (
             <button className="link-btn" onClick={() => setShowAddress(true)}>+ Add Address (Optional)</button>
           )}
-
           {showAddress && (
             <div className="optional-section">
               <div className="optional-section-header">
@@ -137,7 +137,6 @@ function CreatePartyModal({ onClose }) {
           {!showGSTIN && (
             <button className="link-btn" onClick={() => setShowGSTIN(true)}>+ Add GSTIN (Optional)</button>
           )}
-
           {showGSTIN && (
             <div className="optional-section">
               <div className="optional-section-header">
@@ -168,9 +167,10 @@ function CreatePartyModal({ onClose }) {
 // ─── Record Payment Out Page ──────────────────────────────────────────────────
 export default function RecordPaymentOut() {
   const navigate = useNavigate();
-  const [partySearch, setPartySearch]     = useState("");
-  const [showDropdown, setShowDropdown]   = useState(false);
+  const [partySearch, setPartySearch]         = useState("");
+  const [showDropdown, setShowDropdown]       = useState(false);
   const [showCreateParty, setShowCreateParty] = useState(false);
+  const [showSettings, setShowSettings]       = useState(false);
 
   const handlePartyFocus = () => setShowDropdown(true);
   const handlePartyBlur  = () => setTimeout(() => setShowDropdown(false), 150);
@@ -190,7 +190,12 @@ export default function RecordPaymentOut() {
           <h2 className="page-title">Record Payment Out #1</h2>
           <div className="form-header-actions">
             <button className="icon-btn-square"><MessageSquareIcon /></button>
-            <button className="btn-settings-outline"><SettingsIcon /> Settings</button>
+            <button
+              className="btn-settings-outline"
+              onClick={() => setShowSettings(true)}
+            >
+              <SettingsIcon /> Settings
+            </button>
             <button className="btn-cancel" onClick={() => navigate("/payment-out")}>Cancel</button>
             <button className="btn-save" disabled>Save</button>
           </div>
@@ -282,6 +287,10 @@ export default function RecordPaymentOut() {
 
         <button className="floating-help"><HelpCircleIcon /></button>
       </div>
+
+      {showSettings && (
+        <QuickPaymentOutSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

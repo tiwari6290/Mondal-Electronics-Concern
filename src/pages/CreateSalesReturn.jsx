@@ -6,15 +6,17 @@ import {
   FaChevronDown, FaTimes, FaPlus, FaInfoCircle, FaSearch
 } from "react-icons/fa";
 import { MdQrCodeScanner } from "react-icons/md";
+import QuickSalesReturnSettings from "./Quicksalesreturnsetting";
 import "./CreateSalesReturn.css";
 
 const CreateSalesReturn = () => {
   const navigate = useNavigate();
-  const [showNotes, setShowNotes]   = useState(false);
-  const [notes, setNotes]           = useState("");
-  const [markPaid, setMarkPaid]     = useState(false);
-  const [roundOff, setRoundOff]     = useState(false);
+  const [showNotes, setShowNotes]         = useState(false);
+  const [notes, setNotes]                 = useState("");
+  const [markPaid, setMarkPaid]           = useState(false);
+  const [roundOff, setRoundOff]           = useState(false);
   const [invoiceSearch, setInvoiceSearch] = useState("");
+  const [showSettings, setShowSettings]   = useState(false);
 
   return (
     <div className="app-layout">
@@ -32,7 +34,7 @@ const CreateSalesReturn = () => {
           </div>
           <div className="csr-topbar-right">
             <button className="csr-icon-btn"><FaKeyboard /></button>
-            <button className="csr-settings-btn">
+            <button className="csr-settings-btn" onClick={() => setShowSettings(true)}>
               <FaCog size={13} />
               <span>Settings</span>
             </button>
@@ -253,6 +255,11 @@ const CreateSalesReturn = () => {
           </div>
         </div>
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickSalesReturnSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

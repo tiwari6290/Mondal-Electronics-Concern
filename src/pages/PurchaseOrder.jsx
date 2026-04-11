@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./PurchaseOrder.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import QuickPurchaseOrderSettings from "./Quickpurchaseordersetting";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const SearchIcon = () => (
@@ -39,6 +41,7 @@ const ReceiptXIcon = () => (
 
 export default function PurchaseOrdersList() {
   const navigate = useNavigate();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="po-shell">
@@ -47,7 +50,10 @@ export default function PurchaseOrdersList() {
         <div className="po-page-header">
           <h2 className="po-page-title">Purchase Orders</h2>
           <div className="po-header-actions">
-            <button className="po-icon-btn po-settings-dot-btn">
+            <button
+              className="po-icon-btn po-settings-dot-btn"
+              onClick={() => setShowSettings(true)}
+            >
               <GearIcon /><span className="po-red-dot" />
             </button>
             <button className="po-icon-btn"><MessageSquareIcon /></button>
@@ -88,6 +94,10 @@ export default function PurchaseOrdersList() {
           <p className="po-empty-text">No Transactions Matching the current filter</p>
         </div>
       </div>
+
+      {showSettings && (
+        <QuickPurchaseOrderSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

@@ -7,10 +7,12 @@ import {
   MessageSquare, BarChart2, RefreshCcw,
 } from "lucide-react";
 import { FaEllipsisV } from "react-icons/fa";
+import QuickPurchaseInvoiceSettings from "./Quickpurchaseinvoicesettings";
 
 const PurchaseInvoicesList = () => {
   const navigate = useNavigate();
-  const [dateFilter, setDateFilter] = useState("Last 365 Days");
+  const [dateFilter, setDateFilter]       = useState("Last 365 Days");
+  const [showSettings, setShowSettings]   = useState(false);
 
   const SAMPLE_DATA = [
     { id: 1, date: "10 Mar 2026", number: 4, party: "Aditiya",   dueIn: "-", amount: "₹ 0",      amountSub: "",                  status: ""       },
@@ -34,7 +36,9 @@ const PurchaseInvoicesList = () => {
                 <span>Reports</span>
                 <ChevronDown size={12} />
               </button>
-              <button className="pi-icon-sq"><Settings size={15} /></button>
+              <button className="pi-icon-sq" onClick={() => setShowSettings(true)}>
+                <Settings size={15} />
+              </button>
               <button className="pi-icon-sq"><MessageSquare size={15} /></button>
             </div>
           </div>
@@ -136,6 +140,11 @@ const PurchaseInvoicesList = () => {
 
         </main>
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickPurchaseInvoiceSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

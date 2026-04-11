@@ -5,10 +5,11 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import { FiSearch, FiSettings, FiMoreVertical, FiChevronDown } from "react-icons/fi";
 import { LuCalendarDays } from "react-icons/lu";
 import { BsFileEarmarkText } from "react-icons/bs";
+import QuickProformaSettings from "./Quickproformainvoicesetting";
 
 /* ── Sample Data ── */
 const PROFORMA = [
-  { id: 2, date: "02 Mar 2026", party: "Cash Sale", dueIn: "-",              amount: 256, status: "Open" },
+  { id: 2, date: "02 Mar 2026", party: "Cash Sale", dueIn: "-",                 amount: 256, status: "Open" },
   { id: 1, date: "02 Mar 2026", party: "anando",    dueIn: "Overdue by 4 days", amount: 256, status: "Open" },
 ];
 
@@ -17,6 +18,7 @@ const fmtINR = (n) => "₹ " + Number(n).toLocaleString("en-IN");
 const ProformaInvoice = () => {
   const navigate = useNavigate();
   const [invoiceFilter, setInvoiceFilter] = useState("Show Open Invoices");
+  const [showSettings,  setShowSettings]  = useState(false);
 
   return (
     <div className="dashboard">
@@ -28,7 +30,9 @@ const ProformaInvoice = () => {
         <div className="pfi-topbar">
           <h2 className="pfi-title">Proforma Invoice</h2>
           <div className="pfi-topbar-right">
-            <button className="pfi-icon-btn pfi-dot-btn"><FiSettings size={17} /></button>
+            <button className="pfi-icon-btn pfi-dot-btn" onClick={() => setShowSettings(true)}>
+              <FiSettings size={17} />
+            </button>
             <button className="pfi-icon-btn"><BsFileEarmarkText size={15} /></button>
           </div>
         </div>
@@ -99,6 +103,11 @@ const ProformaInvoice = () => {
         </div>
 
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickProformaSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { FaArrowLeft } from "react-icons/fa";
 import { FiSettings, FiX } from "react-icons/fi";
 import { BsKeyboard, BsUpcScan } from "react-icons/bs";
 import { LuCalendarDays } from "react-icons/lu";
+import QuickProformaSettings from "./Quickproformainvoicesetting";
 
 /* ── blank item row ── */
 const blankItem = () => ({
@@ -16,10 +17,11 @@ const blankItem = () => ({
 const CreateProformaInvoice = () => {
   const navigate = useNavigate();
 
-  const [items,       setItems]       = useState([]);
-  const [showNotes,   setShowNotes]   = useState(false);
-  const [notes,       setNotes]       = useState("");
-  const [autoRound,   setAutoRound]   = useState(false);
+  const [items,        setItems]        = useState([]);
+  const [showNotes,    setShowNotes]    = useState(false);
+  const [notes,        setNotes]        = useState("");
+  const [autoRound,    setAutoRound]    = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   /* ── item helpers ── */
   const addItem    = () => setItems((p) => [...p, blankItem()]);
@@ -58,7 +60,7 @@ const CreateProformaInvoice = () => {
           </div>
           <div className="cpfi-top-right">
             <button className="cpfi-kb-btn"><BsKeyboard size={18} /></button>
-            <button className="cpfi-settings-btn">
+            <button className="cpfi-settings-btn" onClick={() => setShowSettings(true)}>
               <FiSettings size={14} /> Settings
               <span className="cpfi-dot" />
             </button>
@@ -299,6 +301,11 @@ const CreateProformaInvoice = () => {
 
         </div>
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickProformaSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

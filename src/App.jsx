@@ -8,7 +8,7 @@ import SalesInvoices      from "./pages/SalesInvoices";
 import CreateSalesInvoice from "./pages/CreateSalesInvoice";
 import Quotation          from "./pages/Quotation";
 import CreateQuotation    from "./pages/CreateQuotation";
-import PaymentIn          from "./pages/PaymentIn";
+import PaymentIn          from "./pages/Paymentin";
 import SalesReturn        from "./pages/SalesReturn";
 import CreateSalesReturn  from "./pages/CreateSalesReturn";
 import CreditNote         from "./pages/CreditNote";
@@ -30,6 +30,7 @@ import DebitNote          from "./pages/DebitNote";
 import CreateDebit        from "./pages/CreateDebitNote";
 import PurchaseOrders     from "./pages/PurchaseOrder";
 import CreatePurchaseOrder from "./pages/CreatePurchaseOrder";
+import CreatePaymentIn    from "./pages/CreatePaymentIn";  
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
         <Route path="/sales/quotation"         element={<Quotation />} />
         <Route path="/sales/create-quotation"  element={<CreateQuotation />} />
         <Route path="/sales/payment-in"        element={<PaymentIn />} />
+        <Route path="//sales/create-payment-in" element={<CreatePaymentIn />} />
         <Route path="/sales/return"            element={<SalesReturn />} />
         <Route path="/sales/create-return"     element={<CreateSalesReturn />} />
         <Route path="/sales/credit-note"        element={<CreditNote />} />

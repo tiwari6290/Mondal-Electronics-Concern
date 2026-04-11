@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./DebitNote.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import QuickDebitNoteSettings from "./QuickDebitnotesetting";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const SearchIcon = () => (
@@ -39,49 +41,54 @@ const ReceiptXIcon = () => (
 
 export default function DebitNoteList() {
   const navigate = useNavigate();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="dn-shell">
       <Sidebar />
       <div className="dn-main">
-      <div className="dn-page-header">
-        <h2 className="dn-page-title">Debit Note</h2>
-        <div className="dn-header-actions">
-          <button className="dn-icon-btn"><GearIcon /></button>
-          <button className="dn-icon-btn"><MessageSquareIcon /></button>
+        <div className="dn-page-header">
+          <h2 className="dn-page-title">Debit Note</h2>
+          <div className="dn-header-actions">
+            <button className="dn-icon-btn" onClick={() => setShowSettings(true)}><GearIcon /></button>
+            <button className="dn-icon-btn"><MessageSquareIcon /></button>
+          </div>
+        </div>
+
+        <div className="dn-toolbar">
+          <button className="dn-search-btn"><SearchIcon /></button>
+          <div className="dn-date-filter">
+            <CalendarIcon />
+            <span>Last 365 Days</span>
+            <ChevronDownIcon />
+          </div>
+          <div className="dn-spacer" />
+          <button
+            className="dn-btn-primary"
+            onClick={() => navigate("/debit-note/create")}
+          >
+            Create Debit Note
+          </button>
+        </div>
+
+        <div className="dn-table-header">
+          <div className="dn-th">Date <ChevronDownIcon /></div>
+          <div className="dn-th">Debit Note Number</div>
+          <div className="dn-th">Party Name</div>
+          <div className="dn-th">Purchase No</div>
+          <div className="dn-th">Amount</div>
+          <div className="dn-th">Status</div>
+        </div>
+
+        <div className="dn-empty-state">
+          <ReceiptXIcon />
+          <p className="dn-empty-text">No Transactions Matching the current filter</p>
         </div>
       </div>
 
-      <div className="dn-toolbar">
-        <button className="dn-search-btn"><SearchIcon /></button>
-        <div className="dn-date-filter">
-          <CalendarIcon />
-          <span>Last 365 Days</span>
-          <ChevronDownIcon />
-        </div>
-        <div className="dn-spacer" />
-        <button
-          className="dn-btn-primary"
-          onClick={() => navigate("/debit-note/create")}
-        >
-          Create Debit Note
-        </button>
-      </div>
-
-      <div className="dn-table-header">
-        <div className="dn-th">Date <ChevronDownIcon /></div>
-        <div className="dn-th">Debit Note Number</div>
-        <div className="dn-th">Party Name</div>
-        <div className="dn-th">Purchase No</div>
-        <div className="dn-th">Amount</div>
-        <div className="dn-th">Status</div>
-      </div>
-
-      <div className="dn-empty-state">
-        <ReceiptXIcon />
-        <p className="dn-empty-text">No Transactions Matching the current filter</p>
-      </div>
-      </div>
+      {showSettings && (
+        <QuickDebitNoteSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

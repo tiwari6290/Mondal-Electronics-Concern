@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./Paymentout.css";
+import QuickPaymentOutSettings from "./Quickpaymentoutsetting";
 
 const SearchIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,6 +40,7 @@ const ShoppingCartXIcon = () => (
 
 export default function PaymentOutList() {
   const navigate = useNavigate();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="app-shell">
@@ -47,7 +49,7 @@ export default function PaymentOutList() {
         <div className="page-header">
           <h2 className="page-title">Payment Out</h2>
           <div className="page-header-actions">
-            <button className="icon-btn"><GearIcon /></button>
+            <button className="icon-btn" onClick={() => setShowSettings(true)}><GearIcon /></button>
             <button className="icon-btn"><MessageSquareIcon /></button>
           </div>
         </div>
@@ -79,6 +81,10 @@ export default function PaymentOutList() {
           <p className="empty-text">No Transactions Matching the current filter</p>
         </div>
       </div>
+
+      {showSettings && (
+        <QuickPaymentOutSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

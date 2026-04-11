@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./PurchaseReturn.css";
+import QuickPurchaseReturnSettings from "./Quickpurchasereturnsetting";
 
 const SearchIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -37,6 +39,7 @@ const ReceiptXIcon = () => (
 
 export default function PurchaseReturnList() {
   const navigate = useNavigate();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="pr-shell">
@@ -45,7 +48,7 @@ export default function PurchaseReturnList() {
         <div className="pr-page-header">
           <h2 className="pr-page-title">Purchase Return</h2>
           <div className="pr-header-actions">
-            <button className="pr-icon-btn"><GearIcon /></button>
+            <button className="pr-icon-btn" onClick={() => setShowSettings(true)}><GearIcon /></button>
             <button className="pr-icon-btn"><MessageSquareIcon /></button>
           </div>
         </div>
@@ -77,6 +80,10 @@ export default function PurchaseReturnList() {
           <p className="pr-empty-text">No Transactions Matching the current filter</p>
         </div>
       </div>
+
+      {showSettings && (
+        <QuickPurchaseReturnSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

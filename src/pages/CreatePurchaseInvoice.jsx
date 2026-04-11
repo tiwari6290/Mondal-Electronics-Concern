@@ -6,6 +6,7 @@ import {
   ChevronDown, Settings, Plus, Calendar,
   ArrowLeft, Keyboard, Smartphone, ScanLine, X, Share2,
 } from "lucide-react";
+import QuickPurchaseInvoiceSettings from "./Quickpurchaseinvoicesettings";
 
 const CreatePurchaseInvoice = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ const CreatePurchaseInvoice = () => {
   const [showSmsBanner, setShowSmsBanner] = useState(true);
   const [amountPaid, setAmountPaid]       = useState("0");
   const [paymentMethod, setPaymentMethod] = useState("Cash");
+  const [showSettings, setShowSettings]   = useState(false);
 
   const addItem = () =>
     setItems([...items, { id: Date.now(), name: "", hsn: "", qty: 1, price: 0, discount: 0, tax: 0 }]);
@@ -37,7 +39,10 @@ const CreatePurchaseInvoice = () => {
               <button className="cpi-header-btn">
                 <Smartphone size={14} /><span>Upload using Phone</span>
               </button>
-              <button className="cpi-header-btn cpi-settings-btn">
+              <button
+                className="cpi-header-btn cpi-settings-btn"
+                onClick={() => setShowSettings(true)}
+              >
                 <Settings size={14} /><span>Settings</span>
                 <span className="cpi-settings-dot" />
               </button>
@@ -206,6 +211,11 @@ const CreatePurchaseInvoice = () => {
 
         </main>
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickPurchaseInvoiceSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

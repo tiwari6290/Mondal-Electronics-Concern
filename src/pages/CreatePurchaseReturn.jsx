@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "./CreatePurchaseReturn.css";
+import QuickPurchaseReturnSettings from "./Quickpurchasereturnsetting";
 
 const ChevronDownIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -64,6 +65,7 @@ export default function CreatePurchaseReturn() {
   const navigate = useNavigate();
   const [smsBannerVisible, setSmsBannerVisible] = useState(true);
   const [partyAdded, setPartyAdded]             = useState(false);
+  const [showSettings, setShowSettings]         = useState(false);
 
   return (
     <div className="pr-shell">
@@ -78,7 +80,9 @@ export default function CreatePurchaseReturn() {
           <h2 className="pr-page-title">Create Purchase Return</h2>
           <div className="pr-form-header-actions">
             <button className="pr-icon-btn-sq"><MessageSquareIcon /></button>
-            <button className="pr-btn-settings"><GearIcon /> Settings</button>
+            <button className="pr-btn-settings" onClick={() => setShowSettings(true)}>
+              <GearIcon /> Settings
+            </button>
             <button className="pr-btn-save-trio" disabled>Save &amp; New</button>
             <button className="pr-btn-save-main" disabled>Save</button>
           </div>
@@ -232,6 +236,10 @@ export default function CreatePurchaseReturn() {
           </div>
         </div>
       </div>
+
+      {showSettings && (
+        <QuickPurchaseReturnSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

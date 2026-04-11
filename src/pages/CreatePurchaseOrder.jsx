@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./CreatePurchaseOrder.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import QuickPurchaseOrderSettings from "./Quickpurchaseordersetting";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
 const ArrowLeftIcon = () => (
@@ -65,6 +66,7 @@ export default function CreatePurchaseOrder() {
   const [smsBannerVisible, setSmsBannerVisible] = useState(true);
   const [autoRound, setAutoRound]               = useState(false);
   const [markPaid, setMarkPaid]                 = useState(false);
+  const [showSettings, setShowSettings]         = useState(false);
 
   return (
     <div className="po-shell">
@@ -79,7 +81,9 @@ export default function CreatePurchaseOrder() {
           <h2 className="po-page-title">Create Purchase Order</h2>
           <div className="po-form-header-actions">
             <button className="po-icon-btn-sq"><KeyboardIcon /></button>
-            <button className="po-btn-settings"><GearIcon /> Settings</button>
+            <button className="po-btn-settings" onClick={() => setShowSettings(true)}>
+              <GearIcon /> Settings
+            </button>
             <button className="po-btn-save-trio" disabled>Save &amp; New</button>
             <button className="po-btn-save-main" disabled>Save</button>
           </div>
@@ -103,9 +107,7 @@ export default function CreatePurchaseOrder() {
 
           {/* LEFT COLUMN */}
           <div className="po-left-col">
-
             <div className="po-section-label">Bill From</div>
-
             <div className="po-add-party-box">+ Add Party</div>
 
             {/* Items Table */}
@@ -126,7 +128,6 @@ export default function CreatePurchaseOrder() {
                   </svg>
                 </button>
               </div>
-
               <div className="po-add-item-row">
                 <span className="po-add-item-text">+ Add Item</span>
                 <div className="po-scan-barcode-btn">
@@ -147,7 +148,6 @@ export default function CreatePurchaseOrder() {
             {/* Bottom links */}
             <div className="po-bottom-left">
               <button className="po-link-btn">+ Add Notes</button>
-
               <div className="po-terms-box">
                 <div className="po-terms-header">
                   <span>Terms and Conditions</span>
@@ -158,7 +158,6 @@ export default function CreatePurchaseOrder() {
                   <li>All disputes are subject to [ENTER_YOUR_CITY_NAME] jurisdiction only</li>
                 </ol>
               </div>
-
               <button className="po-link-btn">+ Add New Account</button>
               <button className="po-link-btn">+ Add Payment QR</button>
             </div>
@@ -166,8 +165,6 @@ export default function CreatePurchaseOrder() {
 
           {/* RIGHT COLUMN */}
           <div className="po-right-col">
-
-            {/* Purchase Order No + Date */}
             <div className="po-right-row">
               <div className="po-field-group">
                 <label className="po-field-label">Purchase Order No:</label>
@@ -183,7 +180,6 @@ export default function CreatePurchaseOrder() {
               </div>
             </div>
 
-            {/* Link to Purchase Invoice */}
             <div className="po-link-purchase-row">
               <span className="po-field-label">Link to Purchase Invoice:</span>
               <span className="po-new-badge">New</span>
@@ -194,18 +190,15 @@ export default function CreatePurchaseOrder() {
               <input className="po-search-input" placeholder="Search purchase invoices" />
             </div>
 
-            {/* Summary */}
             <div className="po-summary">
               <div className="po-summary-row">
                 <button className="po-link-btn">+ Add Additional Charges</button>
                 <span className="po-summary-amt">₹ 0</span>
               </div>
-
               <div className="po-summary-row">
                 <span className="po-summary-label">Taxable Amount</span>
                 <span className="po-summary-amt">₹ 0</span>
               </div>
-
               <div className="po-summary-row">
                 <button className="po-link-btn">+ Add Discount</button>
                 <span className="po-summary-amt">- ₹ 0</span>
@@ -247,6 +240,10 @@ export default function CreatePurchaseOrder() {
           </div>
         </div>
       </div>
+
+      {showSettings && (
+        <QuickPurchaseOrderSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 }

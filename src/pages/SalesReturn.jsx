@@ -2,17 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { FaSearch, FaChevronDown, FaEllipsisV, FaCog, FaFileExport } from "react-icons/fa";
+import QuickSalesReturnSettings from "./Quicksalesreturnsetting";
 import "./SalesReturn.css";
 
 const SAMPLE_DATA = [
-  { id: 1, date: "05 Mar 2026", number: 3, party: "Aditiya",        invoiceNo: 19, amount: "₹ 3,556",  status: "Unpaid" },
+  { id: 1, date: "05 Mar 2026", number: 3, party: "Aditiya",         invoiceNo: 19, amount: "₹ 3,556",  status: "Unpaid" },
   { id: 2, date: "03 Mar 2026", number: 2, party: "Ramakant Pandit", invoiceNo: 21, amount: "₹ 45,000", status: "Unpaid" },
   { id: 3, date: "03 Mar 2026", number: 1, party: "Ramakant Pandit", invoiceNo: 22, amount: "₹ 21,000", status: "Unpaid" },
 ];
 
 const SalesReturn = () => {
   const navigate = useNavigate();
-  const [dateFilter, setDateFilter] = useState("Last 365 Days");
+  const [dateFilter, setDateFilter]       = useState("Last 365 Days");
+  const [showSettings, setShowSettings]   = useState(false);
 
   return (
     <div className="app-layout">
@@ -24,7 +26,9 @@ const SalesReturn = () => {
         <div className="sr-topbar">
           <h2 className="sr-title">Sales Return</h2>
           <div className="sr-topbar-actions">
-            <button className="sr-icon-btn"><FaCog /></button>
+            <button className="sr-icon-btn" onClick={() => setShowSettings(true)}>
+              <FaCog />
+            </button>
             <button className="sr-icon-btn"><FaFileExport /></button>
           </div>
         </div>
@@ -93,6 +97,11 @@ const SalesReturn = () => {
         </div>
 
       </div>
+
+      {/* Settings Modal */}
+      {showSettings && (
+        <QuickSalesReturnSettings onClose={() => setShowSettings(false)} />
+      )}
     </div>
   );
 };

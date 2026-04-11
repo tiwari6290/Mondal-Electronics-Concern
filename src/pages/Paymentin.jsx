@@ -5,8 +5,8 @@ import Sidebar from "../components/Sidebar/Sidebar";
 import { FiSearch, FiSettings, FiMoreVertical, FiChevronDown } from "react-icons/fi";
 import { LuCalendarDays } from "react-icons/lu";
 import { BsFileEarmarkText } from "react-icons/bs";
+import QuickPaymentSettings from "./QuickPaymentSettings";
 
-/* ── Sample Data ── */
 const PAYMENTS = [
   { id: 13, date: "10 Mar 2026", party: "Saktiman",          settled: 10000,  received: 10000,  mode: "Cash"           },
   { id: 12, date: "10 Mar 2026", party: "Saktiman",          settled: 1000,   received: 1000,   mode: "Cash"           },
@@ -24,6 +24,7 @@ const fmtINR = (n) => "₹ " + Number(n).toLocaleString("en-IN");
 
 const PaymentIn = () => {
   const navigate = useNavigate();
+  const [showSettings, setShowSettings] = useState(false);
 
   return (
     <div className="dashboard">
@@ -35,7 +36,9 @@ const PaymentIn = () => {
         <div className="pi-topbar">
           <h2 className="pi-title">Payment In</h2>
           <div className="pi-topbar-right">
-            <button className="pi-icon-btn"><FiSettings size={17} /></button>
+            <button className="pi-icon-btn" onClick={() => setShowSettings(true)}>
+              <FiSettings size={17} />
+            </button>
             <button className="pi-icon-btn"><BsFileEarmarkText size={15} /></button>
           </div>
         </div>
@@ -43,7 +46,7 @@ const PaymentIn = () => {
         {/* ── TAB BAR ── */}
         <div className="pi-tabs">
           <button className="pi-tab pi-tab-active">
-             Payment Received
+            Payment Received
           </button>
         </div>
 
@@ -96,6 +99,12 @@ const PaymentIn = () => {
         </div>
 
       </div>
+
+      {/* ── Quick Payment Settings Modal ── */}
+      {showSettings && (
+        <QuickPaymentSettings onClose={() => setShowSettings(false)} />
+      )}
+
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SalesInvoices.css";
 import Sidebar from "../components/Sidebar/Sidebar";
+import QuickInvoiceSettings from "../pages/Quickinvoicesettings";
 import { FiSearch, FiSettings, FiMoreVertical, FiChevronDown } from "react-icons/fi";
 import { TbReportAnalytics } from "react-icons/tb";
 import { LuCalendarDays } from "react-icons/lu";
@@ -36,7 +37,8 @@ const StatusBadge = ({ status }) => {
 
 const SalesInvoices = () => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState([]);
+  const [selected,     setSelected]     = useState([]);
+  const [showSettings, setShowSettings] = useState(false);   // ← added
 
   const toggleRow = (id) =>
     setSelected((p) => p.includes(id) ? p.filter((x) => x !== id) : [...p, id]);
@@ -57,7 +59,10 @@ const SalesInvoices = () => {
             <button className="si-reports-btn">
               <TbReportAnalytics size={15} /> Reports <FiChevronDown size={12} />
             </button>
-            <button className="si-icon-btn si-dot-btn"><FiSettings size={16} /></button>
+            {/* ← onClick opens the same settings popup */}
+            <button className="si-icon-btn si-dot-btn" onClick={() => setShowSettings(true)}>
+              <FiSettings size={16} />
+            </button>
             <button className="si-icon-btn"><BsFileEarmarkText size={15} /></button>
           </div>
         </div>
@@ -98,7 +103,6 @@ const SalesInvoices = () => {
             <button className="si-bulk-btn">
               <RiCheckboxMultipleLine size={14} /> Bulk Actions <FiChevronDown size={12} />
             </button>
-            {/* ── THIS IS THE BUTTON THAT NAVIGATES ── */}
             <button
               className="si-create-btn"
               onClick={() => navigate("/sales/create-invoice")}
@@ -169,6 +173,12 @@ const SalesInvoices = () => {
         </div>
 
       </div>
+
+      {/* QUICK INVOICE SETTINGS MODAL — same as CreateSalesInvoice */}
+      {showSettings && (
+        <QuickInvoiceSettings onClose={() => setShowSettings(false)} />
+      )}
+
     </div>
   );
 };

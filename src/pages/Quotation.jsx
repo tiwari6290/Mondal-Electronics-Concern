@@ -16,6 +16,7 @@ const Quotation = () => {
   const navigate = useNavigate();
   const [dateFilter,   setDateFilter]   = useState("Last 365 Days");
   const [statusFilter, setStatusFilter] = useState("Show Open Quotation");
+  const [showSettings, setShowSettings] = useState(false);   // ← added
 
   return (
     <div className="app-layout">
@@ -27,7 +28,8 @@ const Quotation = () => {
         <div className="qp-topbar">
           <h2 className="qp-title">Quotation / Estimate</h2>
           <div className="qp-topbar-actions">
-            <button className="icon-btn">
+            {/* ← onClick opens the settings popup */}
+            <button className="icon-btn" onClick={() => setShowSettings(true)}>
               <FaCog />
               <span className="notif-dot" />
             </button>
@@ -103,6 +105,12 @@ const Quotation = () => {
         </div>
 
       </div>
+
+      {/* QUICK QUOTATION SETTINGS MODAL */}
+      {showSettings && (
+        <QuickQuotationSettings onClose={() => setShowSettings(false)} />
+      )}
+
     </div>
   );
 };

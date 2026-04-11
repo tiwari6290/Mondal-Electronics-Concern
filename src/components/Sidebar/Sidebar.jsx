@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   FaTachometerAlt, FaUsers, FaBox, FaShoppingCart, FaFileInvoice,
@@ -21,8 +21,33 @@ const Sidebar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  // ── Auto-expand the correct section based on current URL ──
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.startsWith("/inventory") || path.startsWith("/godown")) {
+      setOpenItems(true);
+    }
+    if (path.startsWith("/sales/") || path === "/sales") {
+      setOpenSales(true);
+    }
+    if (
+      path.startsWith("/purchase") ||
+      path.startsWith("/payment-out") ||
+      path.startsWith("/debit-note")
+    ) {
+      setOpenPurchase(true);
+    }
+  }, [location.pathname]);
+
+  // Navigate without closing the create-invoice dropdown
+  const dropdownNavigate = (e, path) => {
+    e.stopPropagation();
+    navigate(path);
+  };
+
   const navItem = (path, label, Icon) => (
     <div
+      key={path}
       className={`sub-item ${isActive(path) ? "active-sub" : ""}`}
       onClick={() => navigate(path)}
     >
@@ -60,51 +85,65 @@ const Sidebar = () => {
           </div>
 
           {openDropdown && (
-            <div className="dropdown-panel">
+            <div className="dropdown-panel" onClick={(e) => e.stopPropagation()}>
               <p className="dropdown-title">GENERAL</p>
               <ul>
-                <li onClick={() => { navigate("/create-party"); setOpenDropdown(false); }}>
+                <li onClick={(e) => dropdownNavigate(e, "/create-party")}>
                   <FaUserPlus /> Create Party
                 </li>
-                <li><FaBoxOpen /> Create Item</li>
+                <li onClick={(e) => e.stopPropagation()}>
+                  <FaBoxOpen /> Create Item
+                </li>
               </ul>
 
               <p className="dropdown-title">SALES TRANSACTIONS</p>
               <ul>
-                <li onClick={() => { navigate("/sales/create-invoice"); setOpenDropdown(false); }}>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-invoice")}>
                   <FaFileInvoice /> Sales Invoice
                 </li>
-                <li onClick={() => { navigate("/sales/create-quotation"); setOpenDropdown(false); }}>
-                  <FaFileInvoiceDollar /> Quotation</li>
-                <li onClick={() => { navigate("/sales/payment-in"); setOpenDropdown(false); }}>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-quotation")}>
+                  <FaFileInvoiceDollar /> Quotation
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-payment-in")}>
                   <FaMoneyBill /> Payment In
                 </li>
-                <li onClick={() => { navigate("/sales/create-return"); setOpenDropdown(false); }}>
-                  <FaUndo /> Sales Return</li>
-                <li onClick={() => { navigate("/sales/create-credit-note"); setOpenDropdown(false); }}>
-                  <FaFileAlt /> Credit Note</li>
-                <li><FaTruck /> Delivery Challan</li>
-                <li onClick={() => { navigate("/sales/create-proforma"); setOpenDropdown(false); }}>
-                  <FaClipboardList /> Proforma Invoice</li>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-return")}>
+                  <FaUndo /> Sales Return
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-credit-note")}>
+                  <FaFileAlt /> Credit Note
+                </li>
+                <li onClick={(e) => e.stopPropagation()}>
+                  <FaTruck /> Delivery Challan
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/sales/create-proforma")}>
+                  <FaClipboardList /> Proforma Invoice
+                </li>
               </ul>
 
               <p className="dropdown-title">PURCHASE TRANSACTIONS</p>
               <ul>
-                <li onClick={() => { navigate("/purchase-invoices/create"); setOpenDropdown(false); }}>
-                  <FaShoppingBag /> Purchase</li>
-                <li onClick={() => { navigate("/payment-out/create"); setOpenDropdown(false); }}>
-                  <FaMoneyCheck /> Payment Out</li>
-                <li onClick={() => { navigate("/purchase-return/create"); setOpenDropdown(false); }}>
-                  <FaUndo /> Purchase Return</li>
-                <li onClick={() => { navigate("/debit-note/create"); setOpenDropdown(false); }}>
-                  <FaFileAlt /> Debit Note</li>
-                <li onClick={() => { navigate("/purchase-orders/create"); setOpenDropdown(false); }}>
-                  <FaClipboardList /> Purchase Orders</li>
+                <li onClick={(e) => dropdownNavigate(e, "/purchase-invoices/create")}>
+                  <FaShoppingBag /> Purchase
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/payment-out/create")}>
+                  <FaMoneyCheck /> Payment Out
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/purchase-return/create")}>
+                  <FaUndo /> Purchase Return
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/debit-note/create")}>
+                  <FaFileAlt /> Debit Note
+                </li>
+                <li onClick={(e) => dropdownNavigate(e, "/purchase-orders/create")}>
+                  <FaClipboardList /> Purchase Orders
+                </li>
               </ul>
 
               <ul>
-                <li onClick={() => { navigate("/expenses"); setOpenDropdown(false); }}>
-                  <FaUserPlus /> Create Expense</li>
+                <li onClick={(e) => dropdownNavigate(e, "/expenses")}>
+                  <FaUserPlus /> Create Expense
+                </li>
               </ul>
             </div>
           )}
@@ -144,10 +183,10 @@ const Sidebar = () => {
               <span>Items</span>
               <FaChevronRight className={`arrow-icon ${openItems ? "rotate" : ""}`} />
             </li>
-                        {openItems && (
+            {openItems && (
               <div className="sub-menu">
-                {navItem("/inventory", "Inventory", FaBox)}
-                {navItem("/godown", "Godown (Warehouse)", FaBox)}
+                {navItem("/inventory", "Inventory",          FaBox)}
+                {navItem("/godown",    "Godown (Warehouse)", FaBox)}
               </div>
             )}
 
@@ -177,25 +216,11 @@ const Sidebar = () => {
             </li>
             {openPurchase && (
               <div className="sub-menu">
-                <div className="sub-item" onClick={() => navigate("/purchase-invoices")}>
-  <FaShoppingBag className="sub-icon" /> Purchase Invoices
-</div>
-
-<div className="sub-item" onClick={() => navigate("/payment-out")}>
-  <FaMoneyCheck className="sub-icon" /> Payment Out
-</div>
-
-<div className="sub-item" onClick={() => navigate("/purchase-return")}>
-  <FaUndo className="sub-icon" /> Purchase Return
-</div>
-
-<div className="sub-item" onClick={() => navigate("/debit-note")}>
-  <FaFileAlt className="sub-icon" /> Debit Note
-</div>
-
-<div className="sub-item" onClick={() => navigate("/purchase-orders")}>
-  <FaClipboardList className="sub-icon" /> Purchase Orders
-</div>
+                {navItem("/purchase-invoices", "Purchase Invoices", FaShoppingBag)}
+                {navItem("/payment-out",       "Payment Out",       FaMoneyCheck)}
+                {navItem("/purchase-return",   "Purchase Return",   FaUndo)}
+                {navItem("/debit-note",        "Debit Note",        FaFileAlt)}
+                {navItem("/purchase-orders",   "Purchase Orders",   FaClipboardList)}
               </div>
             )}
 
@@ -212,22 +237,18 @@ const Sidebar = () => {
               <FaUniversity className="menu-icon" />
               <span>Cash & Bank</span>
             </li>
-
             <li className="menu-item" onClick={() => navigate("/einvoicing")}>
               <FaFileAlt className="menu-icon" />
               <span>E-Invoicing</span>
             </li>
-
             <li className="menu-item" onClick={() => navigate("/bills")}>
               <FaMoneyBill className="menu-icon" />
               <span>Automated Bills</span>
             </li>
-
             <li className="menu-item" onClick={() => navigate("/expenses")}>
               <FaReceipt className="menu-icon" />
               <span>Expenses</span>
             </li>
-
             <li className="menu-item" onClick={() => navigate("/pos")}>
               <FaDesktop className="menu-icon" />
               <span>POS Billing</span>
@@ -243,9 +264,9 @@ const Sidebar = () => {
           {showMore && (
             <ul className="extra-menu">
               <li className="menu-item"><FaCalendarCheck className="menu-icon" /><span>Staff Attendance &amp; Payroll</span></li>
-              <li className="menu-item"><FaUserFriends className="menu-icon" /><span>Manage Users</span></li>
+              <li className="menu-item"><FaUserFriends  className="menu-icon" /><span>Manage Users</span></li>
               <li className="menu-item"><FaShoppingCart className="menu-icon" /><span>Online Orders</span></li>
-              <li className="menu-item"><FaSms className="menu-icon" /><span>SMS Marketing</span></li>
+              <li className="menu-item"><FaSms          className="menu-icon" /><span>SMS Marketing</span></li>
             </ul>
           )}
 
