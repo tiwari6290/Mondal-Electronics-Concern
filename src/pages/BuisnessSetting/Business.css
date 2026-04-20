@@ -973,3 +973,17 @@ body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--t
   .bs-grid-2 { grid-template-columns: 1fr; }
   .bs-topbar-right { gap: 6px; }
 }
+/* ── App Shell ───────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Outlet ──────────────────────────────────────────────────────────────── */
+.bs-outlet {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg);
+}

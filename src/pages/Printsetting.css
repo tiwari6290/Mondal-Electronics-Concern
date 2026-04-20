@@ -1,0 +1,335 @@
+/* PrintSettings.css */
+
+.ps-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f8fa;
+  color: #222;
+  overflow: hidden;
+}
+
+/* ── Topbar ── */
+.ps-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 28px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ps-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.ps-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ps-icon-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.ps-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #444;
+}
+
+.ps-cancel-btn {
+  background: none;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #444;
+}
+
+.ps-save-btn {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 18px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* ── Body ── */
+.ps-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Left Panel ── */
+.ps-left-panel {
+  width: 320px;
+  min-width: 220px;
+  border-right: 1px solid #e5e7eb;
+  background: #fff;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.ps-tabs {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.ps-tab {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.ps-tab.active {
+  font-weight: 600;
+  color: #4f46e5;
+  border-bottom: 2px solid #4f46e5;
+}
+
+.ps-section-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  padding: 16px 20px 8px;
+}
+
+.ps-option-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  border-top: 1px solid #f0f0f0;
+  cursor: pointer;
+  background: #fff;
+  transition: background 0.15s;
+}
+
+.ps-option-row.selected {
+  background: #fafafe;
+}
+
+.ps-option-label {
+  font-size: 14px;
+  color: #222;
+}
+
+.ps-check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #4f46e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ps-divider {
+  border-top: 1px solid #f0f0f0;
+  margin-top: 8px;
+}
+
+/* ── Upload Box ── */
+.ps-upload-box {
+  margin: 0 20px;
+  border: 1.5px dashed #d1d5db;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px 16px;
+  cursor: pointer;
+  background: #fafafa;
+  min-height: 140px;
+}
+
+.ps-logo-preview {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.ps-upload-link {
+  color: #4f46e5;
+  font-size: 13px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ps-logo-note {
+  margin: 10px 20px 0;
+  background: #f9f9f9;
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.ps-logo-note a {
+  color: #4f46e5;
+}
+
+/* ── Right Panel ── */
+.ps-right-panel {
+  flex: 1;
+  overflow-y: auto;
+  background: #f7f8fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.ps-info-banner {
+  background: #fefce8;
+  border-bottom: 1px solid #fde68a;
+  padding: 10px 24px;
+  font-size: 12.5px;
+  color: #555;
+}
+
+.ps-info-banner a {
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.ps-preview-area {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.ps-preview-placeholder {
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 60px;
+}
+
+/* ── Barcode Content ── */
+.ps-barcode-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px 20px;
+}
+
+.ps-barcode-placeholder {
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 40px;
+}
+
+.ps-how-title {
+  color: #4f46e5;
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.ps-how-text {
+  font-size: 13px;
+  color: #444;
+  max-width: 400px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.ps-how-text a {
+  color: #4f46e5;
+}
+
+.ps-support-bar {
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 13px 24px;
+  font-size: 13px;
+  color: #444;
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+}
+
+.ps-support-bar a {
+  color: #4f46e5;
+}
+
+/* ── Tax Invoice Preview ── */
+.ps-invoice {
+  border: 1px solid #ccc;
+  padding: 16px;
+  width: 260px;
+  font-family: monospace;
+  font-size: 11px;
+  line-height: 1.6;
+  background: #fff;
+  margin: 0 auto;
+}
+
+.ps-invoice-center {
+  text-align: center;
+}
+
+.ps-invoice-bold {
+  font-weight: bold;
+}
+
+.ps-invoice-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.ps-invoice-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ps-invoice-hr-solid {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 4px 0;
+}
+
+.ps-invoice-hr-dashed {
+  border: none;
+  border-top: 1px dashed #333;
+  margin: 4px 0;
+}

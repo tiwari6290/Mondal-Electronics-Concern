@@ -1,0 +1,465 @@
+/* ManageUsers.css */
+
+.mu-page {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f7f8fa;
+  color: #222;
+  padding: 24px 28px;
+  overflow-y: auto;
+}
+
+/* ── Header ── */
+.mu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.mu-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  margin: 0;
+}
+
+.mu-help-btn {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Stat Cards ── */
+.mu-stats-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.mu-stat-card {
+  flex: 1;
+  background: #fff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.mu-stat-card.active {
+  background: #f0f0ff;
+  border-color: #a5b4fc;
+}
+
+.mu-stat-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.mu-stat-label span {
+  color: #555;
+}
+
+.mu-stat-value {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111;
+}
+
+.mu-stat-row-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mu-badge {
+  font-size: 11px;
+  background: #f3f4f6;
+  color: #555;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 3px 9px;
+}
+
+/* ── Empty / Onboarding View ── */
+.mu-empty-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 40px;
+}
+
+.mu-diagram {
+  position: relative;
+  width: 560px;
+  height: 320px;
+  margin: 0 auto 24px;
+}
+
+/* Admin node */
+.mu-node-admin {
+  position: absolute;
+  left: 40px;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mu-avatar-admin {
+  width: 64px;
+  height: 64px;
+  background: #e8eaf6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #a5b4fc;
+}
+
+.mu-full-vision-badge {
+  font-size: 10.5px;
+  background: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+
+/* Mid column */
+.mu-mid-col {
+  position: absolute;
+  left: 180px;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mu-mid-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.mu-mid-avatar {
+  width: 64px;
+  height: 64px;
+  background: #e8eaf6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Right column */
+.mu-right-col {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mu-role-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f0f1f8;
+  border-radius: 10px;
+  padding: 8px 14px;
+  width: 180px;
+  position: relative;
+}
+
+.mu-role-avatar {
+  flex-shrink: 0;
+}
+
+.mu-role-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.mu-line {
+  height: 6px;
+  background: #c8ccd8;
+  border-radius: 3px;
+  width: 80%;
+}
+
+.mu-line.short {
+  width: 50%;
+}
+
+.mu-role-label {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.mu-node-label {
+  font-size: 12px;
+  color: #555;
+  margin-top: 2px;
+}
+
+/* Feature badges */
+.mu-badge-staffwise,
+.mu-badge-activity {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  background: #fff8f0;
+  border: 1px solid #fdd9b5;
+  border-radius: 7px;
+  padding: 4px 10px;
+  color: #7a4a10;
+  white-space: nowrap;
+}
+
+.mu-badge-staffwise {
+  right: 8px;
+  top: 190px;
+  background: #fff8f0;
+  border-color: #fdd9b5;
+  color: #7a4a10;
+}
+
+.mu-badge-activity {
+  right: 8px;
+  top: 240px;
+  background: #e8f4ff;
+  border-color: #b3d9ff;
+  color: #1a5fa8;
+}
+
+.mu-feature-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.mu-feature-dot.orange { background: #f97316; }
+.mu-feature-dot.blue   { background: #3b82f6; }
+
+/* CTA */
+.mu-cta-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 6px;
+}
+
+.mu-cta-sub {
+  font-size: 13px;
+  color: #777;
+  margin: 0 0 22px;
+}
+
+.mu-cta-btns {
+  display: flex;
+  gap: 14px;
+}
+
+.mu-btn-primary {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mu-btn-outline {
+  background: #fff;
+  color: #222;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ── Activity View ── */
+.mu-activity-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.mu-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mu-search-icon {
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mu-filter-select {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  padding: 7px 13px;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Table */
+.mu-table {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1;
+  min-height: 300px;
+}
+
+.mu-table-head {
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.mu-th {
+  display: flex;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #555;
+  flex: 1;
+}
+
+.mu-th.wide {
+  flex: 2.5;
+}
+
+.mu-table-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 14px;
+}
+
+.mu-empty-icon svg {
+  opacity: 0.6;
+}
+
+.mu-empty-text {
+  font-size: 13px;
+  color: #999;
+  margin: 0;
+}
+
+/* Promo Banner */
+.mu-promo-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #eef0ff;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-top: 20px;
+}
+
+.mu-promo-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.mu-promo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mu-promo-icon.orange { background: #f97316; }
+.mu-promo-icon.purple { background: #7c3aed; }
+.mu-promo-icon.green  { background: #10b981; }
+.mu-promo-icon.blue   { background: #3b82f6; }
+
+.mu-promo-text {
+  flex: 1;
+}
+
+.mu-promo-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  margin: 0 0 4px;
+}
+
+.mu-promo-sub {
+  font-size: 12.5px;
+  color: #666;
+  margin: 0;
+}
+
+.mu-btn-track {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

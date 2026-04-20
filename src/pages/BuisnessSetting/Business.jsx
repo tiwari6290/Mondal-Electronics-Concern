@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Outlet } from "react-router-dom";
 import "./Business.css";
 
 /* ── SVG Icon helper ──────────────────────────────────────────────────────── */
@@ -48,25 +48,27 @@ const icons = {
 };
 
 /* ── Sidebar ──────────────────────────────────────────────────────────────── */
-function Sidebar({ activeItem }) {
-  const navigate = useNavigate(); // ✅ FIXED: added useNavigate
+function Sidebar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { key: "account",    label: "Account",           icon: "user" },
-    { key: "manage",     label: "Manage Business",   icon: "briefcase", active: true },
-    { key: "invoice",    label: "Invoice Settings",  icon: "fileText" },
-    { key: "print",      label: "Print Settings",    icon: "printer" },
-    { key: "users",      label: "Manage Users",      icon: "users" },
-    { key: "reminders",  label: "Reminders",         icon: "bell" },
-    { key: "ca",         label: "CA Reports Sharing",icon: "share2" },
-    { key: "pricing",    label: "Pricing",            icon: "dollarSign" },
-    { key: "refer",      label: "Refer & Earn",       icon: "help" },
-    { key: "help",       label: "Help And Support",   icon: "help" },
+    { key: "account",   label: "Account",            icon: "user",        path: "/settings/account" },
+    { key: "manage",    label: "Manage Business",     icon: "briefcase",   path: "/settings" },
+    { key: "invoice",   label: "Invoice Settings",    icon: "fileText",    path: "/settings/invoice" },
+    { key: "print",     label: "Print Settings",      icon: "printer",     path: "/settings/print" },
+    { key: "users",     label: "Manage Users",        icon: "users",       path: "/settings/users" },
+    { key: "reminders", label: "Reminders",           icon: "bell",        path: "/settings/reminders" },
+    { key: "ca",        label: "CA Reports Sharing",  icon: "share2",      path: "/settings/reports" },
+    { key: "pricing",   label: "Pricing",             icon: "dollarSign",  path: "/settings/pricing" },
+    { key: "refer",     label: "Refer & Earn",        icon: "help",        path: "/settings/refer" },
+    { key: "help",      label: "Help And Support",    icon: "help",        path: "/settings/help" },
   ];
 
   return (
     <aside className="bs-sidebar">
-      {/* Brand / Business */}
       <div className="sidebar-brand">
         <div className="sidebar-avatar">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -79,33 +81,35 @@ function Sidebar({ activeItem }) {
         </div>
       </div>
 
-      {/* ✅ FIXED: Back to Dashboard button now navigates */}
       <button className="sidebar-back-btn" onClick={() => navigate("/dashboard")}>
         <Icon d={icons.arrowLeft} size={13} color="#fff" />
         Back to Dashboard
       </button>
 
-      {/* Nav */}
       <nav className="sidebar-nav">
         {navItems.map(item => (
           <button
             key={item.key}
-            className={`sidebar-nav-item${item.active ? " active" : ""}`}
+            className={`sidebar-nav-item${isActive(item.path) ? " active" : ""}`}
+            onClick={() => navigate(item.path)}
           >
-            <Icon d={icons[item.icon] || icons.help} size={15} color={item.active ? "var(--accent)" : "var(--text-2)"} />
+            <Icon
+              d={icons[item.icon] || icons.help}
+              size={15}
+              color={isActive(item.path) ? "var(--accent)" : "var(--text-2)"}
+            />
             {item.label}
           </button>
         ))}
 
         <div className="sidebar-divider" />
 
-        <button className="sidebar-nav-item">
+        <button className="sidebar-nav-item" onClick={() => navigate("/login")}>
           <Icon d={icons.logOut} size={15} color="var(--text-2)" />
           Logout
         </button>
       </nav>
 
-      {/* Footer */}
       <div className="sidebar-footer">
         <div className="sidebar-version">App Version : 9.1.0</div>
         <div className="sidebar-secure-row">
@@ -185,10 +189,10 @@ function Card({ icon, title, children, className = "" }) {
   );
 }
 
-/* ── Store SVG illustration ───────────────────────────────────────────────── */
+/* ── Store SVG illustrations ──────────────────────────────────────────────── */
 function Store1SVG() {
   return (
-    <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
       <rect x="5" y="30" width="90" height="50" fill="#e8845a" rx="2"/>
       <rect x="0" y="22" width="100" height="12" fill="#c0603a" rx="2"/>
       <rect x="12" y="38" width="18" height="16" fill="#7ecfe8" rx="2"/>
@@ -197,14 +201,13 @@ function Store1SVG() {
       <rect x="36" y="56" width="28" height="24" fill="#8b6914" rx="2"/>
       <circle cx="60" cy="68" r="2" fill="#f5c842"/>
       <rect x="20" y="44" width="60" height="5" fill="#f5c842" rx="1"/>
-      <text x="50" y="49" textAnchor="middle" fontSize="4" fill="#8b6914" fontWeight="bold">SALE</text>
     </svg>
   );
 }
 
 function Store2SVG() {
   return (
-    <svg width="100" height="80" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
       <rect x="5" y="30" width="90" height="50" fill="#8b6914" rx="2"/>
       <rect x="0" y="22" width="100" height="12" fill="#6b4f10" rx="2"/>
       <rect x="12" y="38" width="18" height="16" fill="#a8d4f5" rx="2"/>
@@ -218,7 +221,7 @@ function Store2SVG() {
 
 function ConnectorSVG() {
   return (
-    <svg width="80" height="60" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
       <line x1="0" y1="30" x2="18" y2="30" stroke="#e4e6ef" strokeWidth="2"/>
       <line x1="62" y1="30" x2="80" y2="30" stroke="#e4e6ef" strokeWidth="2"/>
       <rect x="18" y="14" width="44" height="32" fill="white" stroke="#e4e6ef" strokeWidth="1.5" rx="4"/>
@@ -235,8 +238,8 @@ function ConnectorSVG() {
   );
 }
 
-/* ── Main Component ───────────────────────────────────────────────────────── */
-export default function BusinessSettings() {
+/* ── ManageBusiness Page (index route) ───────────────────────────────────── */
+function ManageBusinessPage() {
   const [businessName, setBusinessName]   = useState("");
   const [nameError, setNameError]         = useState("");
   const [phone, setPhone]                 = useState("");
@@ -260,11 +263,11 @@ export default function BusinessSettings() {
   const [logoPreview, setLogoPreview]     = useState(null);
   const [saved, setSaved]                 = useState(false);
   const [isDragging, setIsDragging]       = useState(false);
-  const logoRef  = useRef();
-  const sigRef   = useRef();
+  const logoRef = useRef();
+  const sigRef  = useRef();
 
   const handleSave = () => {
-    if (businessName.length < 3 || businessName.length > 60) {
+    if (businessName.length > 0 && (businessName.length < 3 || businessName.length > 60)) {
       setNameError("Business name must be 3–60 characters.");
       return;
     }
@@ -291,309 +294,309 @@ export default function BusinessSettings() {
   };
 
   return (
-    <div className="app-shell">
-      {/* ── Sidebar ────────────────────────────────────────────────────── */}
-      <Sidebar />
+    <div className="bs-page">
 
-      {/* ── Main Page ──────────────────────────────────────────────────── */}
-      <div className="bs-page">
+      {/* Top Bar */}
+      <header className="bs-topbar">
+        <div className="bs-topbar-left">
+          <h1 className="bs-title">Business Settings</h1>
+          <p className="bs-subtitle">Edit Your Company Settings And Information</p>
+        </div>
+        <div className="bs-topbar-right">
+          <button className="btn-keyboard" title="Keyboard shortcuts">
+            <Icon d={icons.keyboard} size={16} color="var(--text-2)" />
+          </button>
+          <button className="btn-orange">
+            <Icon d={icons.plus} size={13} /> Create new business
+          </button>
+          <button className="btn-ghost">
+            <Icon d={icons.help} size={13} /> Chat Support
+          </button>
+          <button className="btn-ghost">
+            <Icon d={icons.calendar} size={13} /> Close Financial Year
+          </button>
+          <button className="btn-ghost btn-cancel">Cancel</button>
+          <button className={`btn-save${saved ? " saved" : ""}`} onClick={handleSave}>
+            {saved ? "Saved!" : "Save Changes"}
+          </button>
+        </div>
+      </header>
 
-        {/* Top Bar */}
-        <header className="bs-topbar">
-          <div className="bs-topbar-left">
-            <div>
-              <h1 className="bs-title">Business Settings</h1>
-              <p className="bs-subtitle">Edit Your Company Settings And Information</p>
-            </div>
-          </div>
-          <div className="bs-topbar-right">
-            <button className="btn-keyboard" title="Keyboard shortcuts">
-              <Icon d={icons.keyboard} size={16} color="var(--text-2)" />
-            </button>
-            <button className="btn-orange">
-              <Icon d={icons.plus} size={13} /> Create new business
-            </button>
-            <button className="btn-ghost">
-              <Icon d={icons.help} size={13} /> Chat Support
-            </button>
-            <button className="btn-ghost">
-              <Icon d={icons.calendar} size={13} /> Close Financial Year
-            </button>
-            <button className="btn-ghost btn-cancel">Cancel</button>
-            <button className={`btn-save${saved ? " saved" : ""}`} onClick={handleSave}>
-              {saved ? "Saved!" : "Save Changes"}
-            </button>
-          </div>
-        </header>
+      {/* Body */}
+      <div className="bs-body">
 
-        {/* Body */}
-        <div className="bs-body">
+        {/* LEFT COLUMN */}
+        <div className="bs-col">
 
-          {/* ── LEFT COLUMN ──────────────────────────────────────────── */}
-          <div className="bs-col">
-
-            {/* Company Identity */}
-            <Card icon="building" title="Company Identity">
-              <div className="logo-name-row">
-                <div className="logo-upload-box" onClick={() => logoRef.current?.click()}>
-                  <input ref={logoRef} type="file" hidden accept="image/*" onChange={handleLogoChange} />
-                  {logoPreview
-                    ? <img src={logoPreview} alt="Logo" />
-                    : <>
-                        <Icon d={icons.upload} size={18} color="var(--accent)" />
-                        <span>Upload Logo</span>
-                      </>
-                  }
-                </div>
-                <Field label="Business Name" icon="tag" required error={nameError} style={{ flex: 1 }}>
-                  <input type="text"
-                    className={`bs-input${nameError ? " input-error" : ""}`}
-                    value={businessName}
-                    onChange={e => { setBusinessName(e.target.value); setNameError(""); }}
-                    placeholder="Enter business name" />
-                </Field>
+          <Card icon="building" title="Company Identity">
+            <div className="logo-name-row">
+              <div className="logo-upload-box" onClick={() => logoRef.current?.click()}>
+                <input ref={logoRef} type="file" hidden accept="image/*" onChange={handleLogoChange} />
+                {logoPreview
+                  ? <img src={logoPreview} alt="Logo" />
+                  : <>
+                      <Icon d={icons.upload} size={18} color="var(--accent)" />
+                      <span>Upload Logo</span>
+                    </>
+                }
               </div>
-
-              <div className="bs-grid-2">
-                <Field label="Company Phone Number" icon="phone">
-                  <input type="tel" className="bs-input" value={phone}
-                    onChange={e => setPhone(e.target.value)} placeholder="Enter company phone number" />
-                </Field>
-                <Field label="Company E-Mail" icon="mail">
-                  <input type="email" className="bs-input" value={email}
-                    onChange={e => setEmail(e.target.value)} placeholder="Enter company e-mail" />
-                </Field>
-              </div>
-
-              <Field label="Billing Address" icon="mapPin">
-                <textarea className="bs-input bs-textarea" value={address}
-                  onChange={e => setAddress(e.target.value)}
-                  placeholder="Enter Billing Address" rows={3} />
+              <Field label="Business Name" icon="tag" required error={nameError} style={{ flex: 1 }}>
+                <input type="text"
+                  className={`bs-input${nameError ? " input-error" : ""}`}
+                  value={businessName}
+                  onChange={e => { setBusinessName(e.target.value); setNameError(""); }}
+                  placeholder="Enter business name" />
               </Field>
-
-              <div className="bs-grid-2">
-                <Field label="State">
-                  <div className="select-wrap">
-                    <span className="search-icon">
-                      <Icon d={icons.search} size={12} color="var(--text-3)" />
-                    </span>
-                    <input type="text" className="bs-input with-search-icon" value={stateVal}
-                      onChange={e => setStateVal(e.target.value)} placeholder="Enter State" />
-                    <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
-                  </div>
-                </Field>
-                <Field label="Pincode">
-                  <input type="text" className="bs-input" value={pincode}
-                    onChange={e => setPincode(e.target.value)} placeholder="Enter Pincode" />
-                </Field>
-              </div>
-
-              <Field label="City" icon="mapPin">
-                <input type="text" className="bs-input" value={city}
-                  onChange={e => setCity(e.target.value)} />
-              </Field>
-            </Card>
-
-            {/* GST & Tax Details */}
-            <Card icon="shield" title="GST & Tax Details">
-              <Field label="Are you GST Registered?">
-                <div className="radio-group">
-                  {["Yes", "No"].map(v => (
-                    <label key={v} className={`radio-pill${isGST === (v === "Yes") ? " active" : ""}`}>
-                      <input type="radio" name="gst" hidden
-                        checked={isGST === (v === "Yes")} onChange={() => setIsGST(v === "Yes")} />
-                      <span className="radio-dot" />
-                      {v}
-                    </label>
-                  ))}
-                </div>
-              </Field>
-
-              {isGST && (
-                <Field label="GSTIN" icon="hash" required>
-                  <input type="text" className="bs-input" value={gstin}
-                    onChange={e => setGstin(e.target.value)} placeholder="Enter your GST Number" />
-                </Field>
-              )}
-
-              <Toggle checked={eInvoice} onChange={setEInvoice} label="Enable e-Invoicing" badge="New" disabled={!isGST} />
-
-              <Field label="PAN Number" icon="hash">
-                <input type="text" className="bs-input" value={pan}
-                  onChange={e => setPan(e.target.value)} placeholder="Enter your PAN Number" />
-              </Field>
-
-              <Toggle checked={enableTDS} onChange={setEnableTDS} label="Enable TDS" />
-              <Toggle checked={enableTCS} onChange={setEnableTCS} label="Enable TCS" />
-            </Card>
-
-            {/* Company Settings */}
-            <Card icon="store" title="Company Settings">
-              <div className="tally-card">
-                <div className="tally-icon-box">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                    <line x1="3" y1="9" x2="21" y2="9"/>
-                    <line x1="3" y1="15" x2="21" y2="15"/>
-                    <line x1="9" y1="3" x2="9" y2="21"/>
-                    <line x1="15" y1="3" x2="15" y2="21"/>
-                  </svg>
-                </div>
-                <div className="tally-info">
-                  <span className="tally-name">
-                    Data Export to Tally <span className="badge badge-orange">New</span>
-                  </span>
-                  <span className="tally-desc">Transfer vouchers, items and parties to Tally</span>
-                </div>
-                <button className="btn-tally-go">
-                  <Icon d={icons.arrowRight} size={13} color="var(--accent)" />
-                </button>
-              </div>
-            </Card>
-
-            {/* Add New Business */}
-            <div className="bs-card add-biz-card">
-              <div className="bs-card-header">
-                <div className="bs-card-icon-wrap">
-                  <Icon d={icons.store} size={14} color="var(--accent)" />
-                </div>
-                <h2 className="bs-card-title">Add New Business</h2>
-              </div>
-              <div style={{ padding: "0 20px 20px" }}>
-                <div className="stores-visual-area">
-                  <div style={{ position: "relative" }}>
-                    <div style={{
-                      position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
-                      background: "white", border: "1px solid var(--border)",
-                      borderRadius: "4px", fontSize: "9px", fontWeight: 800,
-                      padding: "2px 10px", color: "var(--text-2)", letterSpacing: ".5px", whiteSpace: "nowrap"
-                    }}>STORE 1</div>
-                    <Store1SVG />
-                  </div>
-                  <ConnectorSVG />
-                  <div style={{ position: "relative" }}>
-                    <div style={{
-                      position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
-                      background: "var(--orange)", border: "1px solid var(--orange)",
-                      borderRadius: "4px", fontSize: "9px", fontWeight: 800,
-                      padding: "2px 10px", color: "#fff", letterSpacing: ".5px", whiteSpace: "nowrap"
-                    }}>STORE 2</div>
-                    <Store2SVG />
-                  </div>
-                </div>
-                <p className="store-caption">Easily Manage all your businesses in one place on myBillBook app</p>
-                <button className="btn-create-biz">
-                  <Icon d={icons.plus} size={13} /> Create New Business
-                </button>
-              </div>
             </div>
 
-          </div>{/* end left col */}
+            <div className="bs-grid-2">
+              <Field label="Company Phone Number" icon="phone">
+                <input type="tel" className="bs-input" value={phone}
+                  onChange={e => setPhone(e.target.value)} placeholder="Enter company phone number" />
+              </Field>
+              <Field label="Company E-Mail" icon="mail">
+                <input type="email" className="bs-input" value={email}
+                  onChange={e => setEmail(e.target.value)} placeholder="Enter company e-mail" />
+              </Field>
+            </div>
 
-          {/* ── RIGHT COLUMN ──────────────────────────────────────────── */}
-          <div className="bs-col">
+            <Field label="Billing Address" icon="mapPin">
+              <textarea className="bs-input bs-textarea" value={address}
+                onChange={e => setAddress(e.target.value)}
+                placeholder="Enter Billing Address" rows={3} />
+            </Field>
 
-            {/* Business Classification */}
-            <Card icon="briefcase" title="Business Classification">
-              <Field label="Business Type" hint="(Select multiple, if applicable)">
+            <div className="bs-grid-2">
+              <Field label="State">
                 <div className="select-wrap">
-                  <select className="bs-input bs-select" value={bizType} onChange={e => setBizType(e.target.value)}>
-                    {["Services", "Manufacturing", "Trading", "Retail", "Wholesale", "Other"].map(t => (
-                      <option key={t}>{t}</option>
-                    ))}
-                  </select>
-                  <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
-                </div>
-              </Field>
-
-              <Field label="Industry Type">
-                <div className="select-wrap industry-select-wrap">
-                  <span className="industry-search-icon">
+                  <span className="search-icon">
                     <Icon d={icons.search} size={12} color="var(--text-3)" />
                   </span>
-                  <select className="bs-input bs-select with-search-icon" value={industryType} onChange={e => setIndustryType(e.target.value)}>
-                    <option value="">Select Industry Type</option>
-                    {["Electronics", "Retail", "FMCG", "Healthcare", "IT", "Finance", "Education"].map(t => (
-                      <option key={t}>{t}</option>
-                    ))}
-                  </select>
+                  <input type="text" className="bs-input with-search-icon" value={stateVal}
+                    onChange={e => setStateVal(e.target.value)} placeholder="Enter State" />
                   <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
                 </div>
               </Field>
-
-              <Field label="Business Registration Type">
-                <div className="select-wrap">
-                  <select className="bs-input bs-select" value={regType} onChange={e => setRegType(e.target.value)}>
-                    {["Private Limited Company", "Public Limited Company", "LLP",
-                      "Sole Proprietorship", "Partnership Firm", "OPC"].map(t => (
-                      <option key={t}>{t}</option>
-                    ))}
-                  </select>
-                  <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
-                </div>
+              <Field label="Pincode">
+                <input type="text" className="bs-input" value={pincode}
+                  onChange={e => setPincode(e.target.value)} placeholder="Enter Pincode" />
               </Field>
-            </Card>
+            </div>
 
-            {/* Signature */}
-            <Card icon="pen" title="Signature">
-              <div className="invoice-note">
-                <Icon d={icons.info} size={13} color="#92400e" />
-                <strong>Note:</strong>&nbsp;Details added below will be shown on your Invoices
+            <Field label="City" icon="mapPin">
+              <input type="text" className="bs-input" value={city}
+                onChange={e => setCity(e.target.value)} />
+            </Field>
+          </Card>
+
+          <Card icon="shield" title="GST & Tax Details">
+            <Field label="Are you GST Registered?">
+              <div className="radio-group">
+                {["Yes", "No"].map(v => (
+                  <label key={v} className={`radio-pill${isGST === (v === "Yes") ? " active" : ""}`}>
+                    <input type="radio" name="gst" hidden
+                      checked={isGST === (v === "Yes")} onChange={() => setIsGST(v === "Yes")} />
+                    <span className="radio-dot" />
+                    {v}
+                  </label>
+                ))}
               </div>
+            </Field>
 
-              {!signatureFile ? (
-                <>
-                  <div
-                    className="signature-placeholder"
-                    onDragOver={e => { e.preventDefault(); setIsDragging(true); }}
-                    onDragLeave={() => setIsDragging(false)}
-                    onDrop={handleFileDrop}
-                    onClick={() => sigRef.current?.click()}
-                  >
-                    <input ref={sigRef} type="file" hidden accept="image/*" onChange={handleFileDrop} />
-                    <div className="sig-inner-box" />
-                  </div>
-                  <p className="sig-hint">
-                    You have enabled to show 'Empty Signature box' on invoices
-                  </p>
-                  <span className="sig-remove-link" onClick={() => {}}>Remove</span>
-                </>
-              ) : (
-                <>
-                  <div
-                    className={`drop-zone has-file${isDragging ? " dragging" : ""}`}
-                    onClick={() => sigRef.current?.click()}
-                  >
-                    <input ref={sigRef} type="file" hidden accept="image/*" onChange={handleFileDrop} />
-                    <div className="drop-check">
-                      <Icon d={icons.check} size={16} color="#fff" />
-                    </div>
-                    <span className="drop-filename">{signatureFile}</span>
-                  </div>
-                  <button className="btn-remove" onClick={() => setSignatureFile(null)}>
-                    <Icon d={icons.x} size={11} /> Remove
-                  </button>
-                </>
-              )}
-            </Card>
+            {isGST && (
+              <Field label="GSTIN" icon="hash" required>
+                <input type="text" className="bs-input" value={gstin}
+                  onChange={e => setGstin(e.target.value)} placeholder="Enter your GST Number" />
+              </Field>
+            )}
 
-            {/* Add Business Details */}
-            <Card icon="globe" title="Add Business Details">
-              <p className="card-desc">Add additional business information such as MSME number, Website etc.</p>
-              <div className="website-row">
-                <span className="website-prefix">
-                  <Icon d={icons.globe} size={12} color="var(--accent)" /> Website
+            <Toggle checked={eInvoice} onChange={setEInvoice} label="Enable e-Invoicing" badge="New" disabled={!isGST} />
+
+            <Field label="PAN Number" icon="hash">
+              <input type="text" className="bs-input" value={pan}
+                onChange={e => setPan(e.target.value)} placeholder="Enter your PAN Number" />
+            </Field>
+
+            <Toggle checked={enableTDS} onChange={setEnableTDS} label="Enable TDS" />
+            <Toggle checked={enableTCS} onChange={setEnableTCS} label="Enable TCS" />
+          </Card>
+
+          <Card icon="store" title="Company Settings">
+            <div className="tally-card">
+              <div className="tally-icon-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="3" y1="15" x2="21" y2="15"/>
+                  <line x1="9" y1="3" x2="9" y2="21"/>
+                  <line x1="15" y1="3" x2="15" y2="21"/>
+                </svg>
+              </div>
+              <div className="tally-info">
+                <span className="tally-name">
+                  Data Export to Tally <span className="badge badge-orange">New</span>
                 </span>
-                <span className="website-separator">-</span>
-                <input type="text" className="bs-input website-input"
-                  value={website} onChange={e => setWebsite(e.target.value)}
-                  placeholder="www.website.com" />
-                <button className="btn-add">Add</button>
+                <span className="tally-desc">Transfer vouchers, items and parties to Tally</span>
               </div>
-            </Card>
+              <button className="btn-tally-go">
+                <Icon d={icons.arrowRight} size={13} color="var(--accent)" />
+              </button>
+            </div>
+          </Card>
 
-          </div>{/* end right col */}
-        </div>
+          <div className="bs-card add-biz-card">
+            <div className="bs-card-header">
+              <div className="bs-card-icon-wrap">
+                <Icon d={icons.store} size={14} color="var(--accent)" />
+              </div>
+              <h2 className="bs-card-title">Add New Business</h2>
+            </div>
+            <div style={{ padding: "0 20px 20px" }}>
+              <div className="stores-visual-area">
+                <div style={{ position: "relative" }}>
+                  <div style={{
+                    position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
+                    background: "white", border: "1px solid var(--border)",
+                    borderRadius: "4px", fontSize: "9px", fontWeight: 800,
+                    padding: "2px 10px", color: "var(--text-2)", letterSpacing: ".5px", whiteSpace: "nowrap"
+                  }}>STORE 1</div>
+                  <Store1SVG />
+                </div>
+                <ConnectorSVG />
+                <div style={{ position: "relative" }}>
+                  <div style={{
+                    position: "absolute", top: "-12px", left: "50%", transform: "translateX(-50%)",
+                    background: "var(--orange)", border: "1px solid var(--orange)",
+                    borderRadius: "4px", fontSize: "9px", fontWeight: 800,
+                    padding: "2px 10px", color: "#fff", letterSpacing: ".5px", whiteSpace: "nowrap"
+                  }}>STORE 2</div>
+                  <Store2SVG />
+                </div>
+              </div>
+              <p className="store-caption">Easily Manage all your businesses in one place on myBillBook app</p>
+              <button className="btn-create-biz">
+                <Icon d={icons.plus} size={13} /> Create New Business
+              </button>
+            </div>
+          </div>
+
+        </div>{/* end left col */}
+
+        {/* RIGHT COLUMN */}
+        <div className="bs-col">
+
+          <Card icon="briefcase" title="Business Classification">
+            <Field label="Business Type" hint="(Select multiple, if applicable)">
+              <div className="select-wrap">
+                <select className="bs-input bs-select" value={bizType} onChange={e => setBizType(e.target.value)}>
+                  {["Services", "Manufacturing", "Trading", "Retail", "Wholesale", "Other"].map(t => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+                <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
+              </div>
+            </Field>
+
+            <Field label="Industry Type">
+              <div className="select-wrap industry-select-wrap">
+                <span className="industry-search-icon">
+                  <Icon d={icons.search} size={12} color="var(--text-3)" />
+                </span>
+                <select className="bs-input bs-select with-search-icon" value={industryType} onChange={e => setIndustryType(e.target.value)}>
+                  <option value="">Select Industry Type</option>
+                  {["Electronics", "Retail", "FMCG", "Healthcare", "IT", "Finance", "Education"].map(t => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+                <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
+              </div>
+            </Field>
+
+            <Field label="Business Registration Type">
+              <div className="select-wrap">
+                <select className="bs-input bs-select" value={regType} onChange={e => setRegType(e.target.value)}>
+                  {["Private Limited Company", "Public Limited Company", "LLP",
+                    "Sole Proprietorship", "Partnership Firm", "OPC"].map(t => (
+                    <option key={t}>{t}</option>
+                  ))}
+                </select>
+                <span className="caret"><Icon d={icons.chevronDown} size={13} /></span>
+              </div>
+            </Field>
+          </Card>
+
+          <Card icon="pen" title="Signature">
+            <div className="invoice-note">
+              <Icon d={icons.info} size={13} color="#92400e" />
+              <strong>Note:</strong>&nbsp;Details added below will be shown on your Invoices
+            </div>
+
+            {!signatureFile ? (
+              <>
+                <div
+                  className="signature-placeholder"
+                  onDragOver={e => { e.preventDefault(); setIsDragging(true); }}
+                  onDragLeave={() => setIsDragging(false)}
+                  onDrop={handleFileDrop}
+                  onClick={() => sigRef.current?.click()}
+                >
+                  <input ref={sigRef} type="file" hidden accept="image/*" onChange={handleFileDrop} />
+                  <div className="sig-inner-box" />
+                </div>
+                <p className="sig-hint">
+                  You have enabled to show 'Empty Signature box' on invoices
+                </p>
+                <span className="sig-remove-link" onClick={() => {}}>Remove</span>
+              </>
+            ) : (
+              <>
+                <div
+                  className={`drop-zone has-file${isDragging ? " dragging" : ""}`}
+                  onClick={() => sigRef.current?.click()}
+                >
+                  <input ref={sigRef} type="file" hidden accept="image/*" onChange={handleFileDrop} />
+                  <div className="drop-check">
+                    <Icon d={icons.check} size={16} color="#fff" />
+                  </div>
+                  <span className="drop-filename">{signatureFile}</span>
+                </div>
+                <button className="btn-remove" onClick={() => setSignatureFile(null)}>
+                  <Icon d={icons.x} size={11} /> Remove
+                </button>
+              </>
+            )}
+          </Card>
+
+          <Card icon="globe" title="Add Business Details">
+            <p className="card-desc">Add additional business information such as MSME number, Website etc.</p>
+            <div className="website-row">
+              <span className="website-prefix">
+                <Icon d={icons.globe} size={12} color="var(--accent)" /> Website
+              </span>
+              <span className="website-separator">-</span>
+              <input type="text" className="bs-input website-input"
+                value={website} onChange={e => setWebsite(e.target.value)}
+                placeholder="www.website.com" />
+              <button className="btn-add">Add</button>
+            </div>
+          </Card>
+
+        </div>{/* end right col */}
+      </div>
+    </div>
+  );
+}
+
+/* ── Root Layout Export ───────────────────────────────────────────────────── */
+export default function BusinessSettings() {
+  const location = useLocation();
+  const isIndex  = location.pathname === "/settings";
+
+  return (
+    <div className="app-shell">
+      <Sidebar />
+      <div className="bs-outlet">
+        {isIndex ? <ManageBusinessPage /> : <Outlet />}
       </div>
     </div>
   );

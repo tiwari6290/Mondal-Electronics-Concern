@@ -1,0 +1,383 @@
+/* ReferAndEarn.css */
+
+.re-page {
+  padding: 28px 32px;
+  background: #f1f2f7;
+  min-height: 100vh;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Page Title ── */
+.re-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: -8px;
+}
+
+/* ── Hero Banner ── */
+.re-banner {
+  background: linear-gradient(120deg, #2d1b6b 0%, #4c2a9c 50%, #6b3fa0 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  overflow: hidden;
+  position: relative;
+  min-height: 80px;
+}
+
+.re-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 1;
+}
+
+.re-btn-refer-hero {
+  padding: 9px 22px;
+  background: #fff;
+  color: #1e1b4b;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+.re-btn-refer-hero:hover { background: #f0eeff; transform: translateY(-1px); }
+
+.re-btn-send-code {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.re-btn-send-code:hover { background: rgba(255,255,255,0.1); }
+
+.re-banner-svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: auto;
+  max-width: 340px;
+}
+
+/* ── Section ── */
+.re-section {
+  background: #fff;
+  border: 1px solid #e4e6ef;
+  border-radius: 12px;
+  padding: 20px 22px;
+}
+
+.re-section-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+/* ── Rewards Grid ── */
+.re-rewards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid #e4e6ef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.re-reward-card {
+  padding: 14px 18px;
+  background: #fff;
+}
+.re-reward-card:first-child {
+  border-right: 1px solid #e4e6ef;
+}
+
+.re-reward-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.re-reward-amount {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.re-rupee {
+  font-size: 16px;
+  color: #374151;
+}
+
+/* ── Tabs ── */
+.re-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1.5px solid #e4e6ef;
+  margin-bottom: 0;
+}
+
+.re-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  margin-bottom: -1.5px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.re-tab:hover { color: #5b4cf5; }
+.re-tab.active {
+  color: #5b4cf5;
+  border-bottom-color: #5b4cf5;
+  font-weight: 600;
+}
+
+/* ── Empty State ── */
+.re-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  gap: 12px;
+}
+
+.re-empty-text {
+  font-size: 13.5px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.re-btn-refer-empty {
+  padding: 9px 28px;
+  background: #5b4cf5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+.re-btn-refer-empty:hover { background: #4337d4; transform: translateY(-1px); }
+
+/* ── How It Works ── */
+.re-how-section {
+  margin-bottom: 8px;
+}
+
+.re-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.re-step-card {
+  border: 1px solid #e4e6ef;
+  border-radius: 10px;
+  padding: 24px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+  background: #fafbff;
+  transition: box-shadow 0.15s;
+}
+.re-step-card:hover { box-shadow: 0 2px 12px rgba(91,76,245,0.1); }
+
+.re-step-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #f0eeff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.re-step-card p {
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ── Modal Overlay ── */
+.re-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+/* ── Modal ── */
+.re-modal {
+  background: #fff;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+  overflow: hidden;
+}
+
+.re-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid #f3f4f8;
+}
+
+.re-modal-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.re-modal-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #e4e6ef;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.re-modal-close:hover { background: #f5f5f5; }
+
+.re-modal-body {
+  padding: 18px 20px 14px;
+}
+
+/* ── Search Input ── */
+.re-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1.5px solid #5b4cf5;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.re-search-icon {
+  position: absolute;
+  left: 12px;
+  pointer-events: none;
+  display: flex;
+}
+
+.re-search-input {
+  flex: 1;
+  padding: 10px 36px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  font-family: inherit;
+  color: #374151;
+  background: transparent;
+}
+.re-search-input::placeholder { color: #9ca3af; }
+
+.re-search-chevron {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  display: flex;
+}
+
+/* ── Modal Footer ── */
+.re-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 20px 18px;
+}
+
+.re-btn-copy {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #f0eeff;
+  border: 1.5px solid #c4bafc;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  color: #5b4cf5;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.re-btn-copy:hover { background: #ede9ff; }
+.re-btn-copy.copied { color: #22c55e; border-color: #bbf7d0; background: #f0fdf4; }
+
+.re-btn-refer-now {
+  padding: 8px 20px;
+  background: #c8d6e8;
+  color: #7a94b0;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.re-btn-refer-now:hover { background: #5b4cf5; color: #fff; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .re-page { padding: 16px; }
+  .re-steps-grid { grid-template-columns: 1fr; }
+  .re-rewards-grid { grid-template-columns: 1fr; }
+  .re-reward-card:first-child { border-right: none; border-bottom: 1px solid #e4e6ef; }
+}

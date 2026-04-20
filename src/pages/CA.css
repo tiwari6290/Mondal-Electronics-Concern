@@ -1,0 +1,466 @@
+/* CAReportsSharing.css */
+
+/* ── Page ── */
+.ca-page {
+  padding: 28px 32px;
+  min-height: 100vh;
+  background: #f1f2f7;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Header ── */
+.ca-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ca-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 3px;
+}
+
+.ca-subtitle {
+  font-size: 12.5px;
+  color: #6b7280;
+}
+
+.ca-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ca-btn-ghost {
+  padding: 8px 18px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #6b7280;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ca-btn-ghost:hover { background: #f5f5f5; }
+
+.ca-btn-save-top {
+  padding: 8px 18px;
+  border: none;
+  background: #c8d6e8;
+  color: #7a94b0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.ca-btn-save-top:hover { background: #5b4cf5; color: #fff; }
+.ca-btn-save-top.saved { background: #22c55e; color: #fff; }
+
+/* ── Settings Section ── */
+.ca-settings-section {
+  background: #fff;
+  border: 1px solid #e4e6ef;
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+}
+
+.ca-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+/* ── Enable Sharing Row ── */
+.ca-enable-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border: 1.5px solid #e4e6ef;
+  border-radius: 10px;
+  background: #f8f9fc;
+  margin-bottom: 14px;
+  gap: 12px;
+}
+
+.ca-enable-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ca-enable-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.ca-enable-desc {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 22px;
+}
+
+/* ── Info Banner ── */
+.ca-info-banner {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 14px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #92400e;
+  margin-top: 4px;
+}
+
+/* ── Toggle ── */
+.ca-toggle {
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+  background: #d1d5db;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.ca-toggle.on { background: #5b4cf5; }
+.ca-toggle-thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.ca-toggle.on .ca-toggle-thumb { transform: translateX(18px); }
+
+/* ── Footer Note ── */
+.ca-footer-note {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: auto;
+  padding-top: 24px;
+  line-height: 1.5;
+}
+
+/* ── Modal Overlay ── */
+.ca-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+/* ── Modal Base ── */
+.ca-modal {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* ── CA Details Modal ── */
+.ca-details-modal {
+  max-width: 480px;
+}
+
+.ca-modal-illustration {
+  position: relative;
+  background: #f0eeff;
+  overflow: hidden;
+}
+
+.ca-illustration {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ca-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  z-index: 10;
+  transition: background 0.15s;
+}
+.ca-modal-close:hover { background: #f5f5f5; }
+
+.ca-modal-close.static {
+  position: static;
+  box-shadow: none;
+  background: transparent;
+}
+.ca-modal-close.static:hover { background: #f5f5f5; }
+
+.ca-modal-body {
+  padding: 20px 22px 0;
+}
+
+.ca-modal-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 18px;
+}
+
+/* ── Fields ── */
+.ca-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.ca-field label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.ca-field input,
+.ca-field select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1.5px solid #e4e6ef;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  color: #111827;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.ca-field input:focus,
+.ca-field select:focus {
+  border-color: #5b4cf5;
+  box-shadow: 0 0 0 3px rgba(91,76,245,0.1);
+}
+.ca-field input::placeholder { color: #9ca3af; }
+
+.req { color: #ef4444; }
+
+/* ── Note ── */
+.ca-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 13px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: #92400e;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* ── Modal Footer ── */
+.ca-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 22px 20px;
+  margin: 16px -22px 0;
+  background: #f8f9fc;
+  border-top: 1px solid #e4e6ef;
+}
+
+.ca-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.ca-footer-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #ede9ff;
+  border: 1.5px solid #c4bafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #5b4cf5;
+  flex-shrink: 0;
+}
+
+.ca-footer-brand span {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+.ca-btn-add {
+  padding: 10px 20px;
+  background: #5b4cf5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.ca-btn-add:hover { background: #4337d4; }
+
+/* ── Add User Modal ── */
+.ca-adduser-modal {
+  max-width: 600px;
+}
+
+.ca-adduser-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 0;
+  margin-bottom: 18px;
+}
+
+.ca-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.ca-select-wrap {
+  position: relative;
+}
+.ca-select-wrap select {
+  appearance: none;
+  padding-right: 34px;
+  cursor: pointer;
+}
+.ca-caret {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* ── Permissions ── */
+.ca-permission-list {
+  margin-top: 16px;
+  border: 1.5px solid #e4e6ef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ca-permission-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.12s;
+  gap: 12px;
+}
+.ca-permission-row:first-child { border-bottom: 1px solid #e4e6ef; }
+.ca-permission-row:hover { background: #f5f3ff; }
+
+/* ── Checkbox ── */
+.ca-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 2px solid #5b4cf5;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.ca-checkbox.checked {
+  background: #5b4cf5;
+  border-color: #5b4cf5;
+}
+
+/* ── Add User Actions ── */
+.ca-adduser-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 18px 0 20px;
+}
+
+.ca-btn-cancel {
+  padding: 10px 24px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #6b7280;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.ca-btn-cancel:hover { background: #f5f5f5; }
+
+.ca-btn-save {
+  padding: 10px 28px;
+  background: #5b4cf5;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.ca-btn-save:hover { background: #4337d4; }
+
+/* ── Scrollbar ── */
+.ca-modal::-webkit-scrollbar { width: 4px; }
+.ca-modal::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }

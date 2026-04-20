@@ -31,6 +31,12 @@ import CreateDebit        from "./pages/CreateDebitNote";
 import PurchaseOrders     from "./pages/PurchaseOrder";
 import CreatePurchaseOrder from "./pages/CreatePurchaseOrder";
 import CreatePaymentIn    from "./pages/CreatePaymentIn";  
+import AccountSettings    from "./pages/AccountSetting";
+import PrintSettings      from "./pages/Printsetting";
+import ManageUsers        from "./pages/ManageUsers";
+import Reminders          from "./pages/Reminders";
+import CA                 from "./pages/CA";
+import Refer              from "./pages/Refer";
 
 
 function App() {
@@ -43,7 +49,6 @@ function App() {
         {/* General */}
         <Route path="/dashboard"               element={<Dashboard />} />
         <Route path="/transactions"            element={<AllTransactions />} />
-        <Route path="/settings/*"              element={<BusinessSettings />} />
         <Route path="/parties"                 element={<Parties />} />
         <Route path="/create-party"            element={<CreateParty />} />
         <Route path="/inventory"               element={<Inventory />} />
@@ -76,6 +81,17 @@ function App() {
         <Route path="/sales/challan"             element={<DeliveryChallan />} />
         <Route path="/sales/proforma"            element={<ProformaInvoice />} />
         <Route path="/sales/create-proforma"     element={<CreateProformaInvoice />} />
+
+        {/*Settingspage*/}
+<Route path="/settings" element={<BusinessSettings />}>
+{/*   <Route index element={<ManageBusiness />} /> */}
+  <Route path="account" element={<AccountSettings />} />
+  <Route path="/settings/print" element={<PrintSettings />} />
+  <Route path="/settings/users" element={<ManageUsers />} />
+  <Route path="/settings/reminders" element={<Reminders />} />
+  <Route path="/settings/reports" element={<CA />} />
+  <Route path="/settings/refer" element={<Refer />} />
+</Route>
       </Routes>
     </Router>
   );
